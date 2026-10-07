@@ -1,5 +1,6 @@
 // FD Web Designs: client-side behavior. Every module enhances markup that
 // already works without script.
+import { inject } from '@vercel/analytics';
 import { initScroll } from './modules/scroll.js';
 import { initIntro } from './modules/intro.js';
 import { initNav } from './modules/nav.js';
@@ -10,6 +11,9 @@ import { initScrollFx } from './modules/scrollfx.js';
 import { initCounters } from './modules/counters.js';
 import { initProjectDialog } from './modules/projectDialog.js';
 import { initForm } from './modules/form.js';
+
+// Initialize Vercel Web Analytics
+inject();
 
 window.__fdReady = true;
 
