@@ -6,7 +6,7 @@ import { scrollToEl } from './scroll.js';
 
 const EMAIL = /^[^\s@]+@[^\s@]+\.[^\s@]{2,}$/;
 
-function smsLink(to, d) {
+function smsText(d) {
   const lines = [
     d.intent === 'call' ? 'Hi FD Web Designs, I would like to schedule a meeting.' : 'Hi FD Web Designs, I would like to start a website project.',
     '',
@@ -20,8 +20,10 @@ function smsLink(to, d) {
     d.package && `Package: ${d.package}`,
     `Details: ${d.message}`,
   ].filter((l, i) => i === 1 || Boolean(l));
-  return `sms:${to}?&body=${encodeURIComponent(lines.join('\n'))}`;
+  return lines.join('\n');
 }
+const smsLink = (to, text) => `sms:${to}?&body=${encodeURIComponent(text)}`;
+const isPhone = () => matchMedia('(hover: none) and (pointer: coarse)').matches;
 
 export function initForm() {
   const form = document.querySelector('[data-form]');
@@ -64,6 +66,19 @@ export function initForm() {
     input?.addEventListener('input', () => input.closest('.field')?.classList.contains('is-invalid') && check(name));
   });
 
+  let smsBody = '';
+  const copyBtn = document.querySelector('[data-sms-copy]');
+  copyBtn?.addEventListener('click', async () => {
+    const label = copyBtn.querySelector('[data-sms-copy-label]');
+    try {
+      await navigator.clipboard.writeText(smsBody);
+      label.textContent = 'Copied';
+    } catch {
+      label.textContent = 'Copy failed';
+    }
+    setTimeout(() => { label.textContent = 'Copy Message'; }, 2500);
+  });
+
   form.addEventListener('submit', async (e) => {
     e.preventDefault();
     status.textContent = '';
@@ -89,8 +104,17 @@ export function initForm() {
         });
         if (!res.ok) throw new Error(`Request failed (${res.status})`);
       }
-      // The request goes to our phone as a text, sent from the visitor's own messages app.
-      if (config.form?.smsTo) window.location.href = smsLink(config.form.smsTo, data);
+      // The request goes to our phone as a text, sent from the visitor's own
+      // messages app. Phones open it right away; everyone gets a Send Text Now
+      // button (a real link, which browsers reliably hand to Messages) and a
+      // copy fallback for devices that can't text.
+      if (config.form?.smsTo) {
+        smsBody = smsText(data);
+        const href = smsLink(config.form.smsTo, smsBody);
+        const send = document.querySelector('[data-sms-send]');
+        if (send) send.href = href;
+        if (isPhone()) window.location.href = href;
+      }
       form.hidden = true;
       success.hidden = false;
       success.focus();

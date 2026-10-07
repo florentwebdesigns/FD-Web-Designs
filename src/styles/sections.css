@@ -417,6 +417,9 @@ a.contact__value:hover { color: var(--cyan); }
 .form-success__icon .icon { width: 28px; height: 28px; }
 .form-success h3 { font-family: var(--font-display); text-transform: uppercase; font-size: var(--fs-xl); letter-spacing: -0.04em; }
 .form-success p { color: var(--muted); max-width: 44ch; }
+.form-success__actions { display: flex; flex-wrap: wrap; gap: 12px; margin-top: 4px; }
+.form-success p.form-success__fine { font-size: var(--fs-sm); }
+.form-success__fine a { color: var(--text); text-decoration: underline; text-underline-offset: 3px; }
 
 @media (max-width: 1000px) { .contact__grid { grid-template-columns: 1fr; } }
 @media (max-width: 600px) {

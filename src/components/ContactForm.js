@@ -111,8 +111,13 @@ export const ContactForm = ({ site, formOptions }) => `
 
       <div class="form-success" data-form-success hidden tabindex="-1">
         <span class="form-success__icon">${icon('check')}</span>
-        <h3>Almost done, just press send.</h3>
-        <p>Your details are ready in your messages app. Press send and we'll get back to you within one business day. If nothing opened, text or call us at <a href="tel:${site.form.smsTo}">${esc(site.form.smsDisplay)}</a>.</p>
+        <h3>One last step: send your text.</h3>
+        <p>Tap the button to open Messages with your details already filled in, then press send. We'll get back to you within one business day.</p>
+        <div class="form-success__actions">
+          <a class="btn btn--primary" href="tel:${site.form.smsTo}" data-sms-send><span class="btn__label">Send Text Now</span><span class="btn__icon">${icon('arrow')}</span></a>
+          <button class="btn btn--ghost" type="button" data-sms-copy><span class="btn__label" data-sms-copy-label>Copy Message</span><span class="btn__icon">${icon('check')}</span></button>
+        </div>
+        <p class="form-success__fine">Can't text from this device? Copy the message and text it to <a href="tel:${site.form.smsTo}">${esc(site.form.smsDisplay)}</a>, or give us a call.</p>
         <button class="link-arrow" type="button" data-form-reset>Send another message ${icon('arrow')}</button>
       </div>
     </div>
