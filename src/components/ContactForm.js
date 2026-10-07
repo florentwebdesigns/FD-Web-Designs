@@ -55,9 +55,9 @@ export const ContactForm = ({ site, formOptions }) => `
       <div class="book-card" data-reveal>
         <div>
           <p class="book-card__title">Prefer to talk it through?</p>
-          <p class="book-card__text">Book a free 30-minute call. No pressure, no jargon.</p>
+          <p class="book-card__text">Call ${esc(site.phones[0].display)} to schedule a free meeting. No pressure, no jargon.</p>
         </div>
-        ${Button({ label: 'Book a Call', book: true, variant: 'ghost', iconName: 'calendar' })}
+        ${Button({ label: 'Call to Schedule a Meeting', href: `tel:${site.phones[0].tel}`, variant: 'ghost', iconName: 'phone' })}
       </div>
     </div>
 
@@ -68,7 +68,7 @@ export const ContactForm = ({ site, formOptions }) => `
 
         <div class="form__intent" role="radiogroup" aria-label="How would you like to start?">
           <label class="seg"><input type="radio" name="start" value="project" checked data-start><span>Start a project</span></label>
-          <label class="seg"><input type="radio" name="start" value="call" data-start><span>Book a call</span></label>
+          <label class="seg"><input type="radio" name="start" value="call" data-start><span>Schedule a meeting</span></label>
         </div>
 
         <div class="form__grid">

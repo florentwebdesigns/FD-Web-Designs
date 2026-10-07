@@ -43,8 +43,8 @@ export const site = {
   ],
 
   // Booking: paste a Calendly / Cal.com / TidyCal / Google Calendar booking link
-  // into `url` and every BOOK A CALL button opens it. Leave it empty and the
-  // buttons scroll to the contact form with "Book a call" preselected.
+  // into `url` and every BOOK A FREE CONSULTATION button opens it. Leave it empty and the
+  // buttons scroll to the contact form with "Schedule a meeting" preselected.
   booking: {
     provider: 'calendly', // label only
     url: '',

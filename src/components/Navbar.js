@@ -11,7 +11,7 @@ export const Navbar = ({ site }) => `
       <ul>${each(site.nav, (l) => `<li><a href="${l.href}" data-nav-link>${esc(l.label)}</a></li>`)}</ul>
     </nav>
     <div class="nav__actions">
-      ${Button({ label: 'Book a Call', variant: 'primary', book: true, attrs: 'data-size="sm"' })}
+      ${Button({ label: 'Call to Schedule a Meeting', href: `tel:${site.phones[0].tel}`, variant: 'primary', iconName: 'phone', attrs: 'data-size="sm"' })}
       <button class="nav__toggle" type="button" aria-expanded="false" aria-controls="mobile-menu" data-menu-toggle>
         <span class="sr-only">Open menu</span>
         <span class="nav__burger" aria-hidden="true"><i></i><i></i></span>

@@ -8,7 +8,7 @@ const EMAIL = /^[^\s@]+@[^\s@]+\.[^\s@]{2,}$/;
 
 function smsLink(to, d) {
   const lines = [
-    d.intent === 'call' ? 'Hi FD Web Designs, I would like to book a call.' : 'Hi FD Web Designs, I would like to start a website project.',
+    d.intent === 'call' ? 'Hi FD Web Designs, I would like to schedule a meeting.' : 'Hi FD Web Designs, I would like to start a website project.',
     '',
     `Name: ${d.name}`,
     d.business && `Business: ${d.business}`,
@@ -34,7 +34,7 @@ export function initForm() {
   // Project vs. call toggle changes the button wording.
   const setIntent = (value) => {
     intent.value = value;
-    submitLabel.textContent = value === 'call' ? 'Request My Call' : 'Start My Project';
+    submitLabel.textContent = value === 'call' ? 'Request a Meeting' : 'Start My Project';
     const radio = form.querySelector(`[data-start][value="${value}"]`);
     if (radio) radio.checked = true;
   };
