@@ -1,0 +1,20 @@
+{
+  "name": "fd-web-designs-site",
+  "version": "1.0.0",
+  "description": "FD Web Designs LLC agency website",
+  "scripts": {
+    "dev": "node build.mjs --dev",
+    "build": "node build.mjs",
+    "preview": "node build.mjs --preview",
+    "mockups": "node tools/capture-mockups.mjs && python3 tools/optimize-images.py",
+    "og": "node tools/make-og.mjs"
+  },
+  "devDependencies": {
+    "esbuild": "^0.25.12"
+  },
+  "dependencies": {
+    "lenis": "^1.3.26"
+  },
+  "private": true,
+  "type": "module"
+}

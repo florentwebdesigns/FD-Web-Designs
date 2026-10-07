@@ -1,0 +1,120 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Basco Plumbing &amp; Heating (placeholder mockup)</title>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;700;800&display=swap">
+<style>
+  :root { --navy:#0b2545; --navy2:#13315c; --red:#e4572e; --sky:#8da9c4; --ice:#eef4fa; --ink:#0d1b2a; }
+  * { box-sizing:border-box; margin:0; padding:0 }
+  body { font-family:"Plus Jakarta Sans", sans-serif; background:#fff; color:var(--ink); -webkit-font-smoothing:antialiased }
+  .wrap { max-width:1220px; margin:0 auto; padding:0 40px }
+  .top { background:var(--navy); color:#c9d6e5; font-size:13px }
+  .top .wrap { display:flex; justify-content:space-between; padding-top:10px; padding-bottom:10px }
+  header { background:#fff; border-bottom:1px solid #e3e9f0 }
+  header .wrap { display:flex; align-items:center; justify-content:space-between; height:84px }
+  .logo { display:flex; align-items:center; gap:12px; font-weight:800; font-size:20px; color:var(--navy) }
+  .logo i { width:38px; height:38px; border-radius:10px; background:linear-gradient(135deg,var(--navy2),var(--navy)); position:relative }
+  .logo i::after { content:""; position:absolute; left:12px; top:8px; width:14px; height:20px; background:var(--red); border-radius:50% 50% 50% 50% / 60% 60% 40% 40% }
+  .logo small { display:block; font-size:11px; font-weight:600; letter-spacing:.2em; color:var(--sky); text-transform:uppercase }
+  nav { display:flex; gap:32px; font-weight:600; font-size:15px; color:#334a63 }
+  .btn { display:inline-flex; align-items:center; gap:10px; background:var(--red); color:#fff; font-weight:700; font-size:15px; padding:16px 26px; border-radius:999px }
+  .btn.alt { background:#fff; color:var(--navy); box-shadow:inset 0 0 0 2px #d5dfeb }
+  .hero { background:linear-gradient(180deg,var(--ice),#fff); padding:80px 0 100px }
+  .hero .wrap { display:grid; grid-template-columns:1fr 1fr; gap:64px; align-items:center }
+  .pill { display:inline-flex; gap:8px; align-items:center; background:#fff; border:1px solid #dbe5ef; border-radius:999px; padding:8px 16px; font-size:13px; font-weight:600; color:#334a63; margin-bottom:26px }
+  .pill b { width:8px; height:8px; border-radius:50%; background:#2bb673 }
+  h1 { font-size:70px; line-height:1.02; letter-spacing:-.035em; font-weight:800; color:var(--navy) }
+  h1 em { font-style:normal; color:var(--red) }
+  .lead { font-size:19px; line-height:1.6; color:#4a5f78; margin:24px 0 36px; max-width:520px }
+  .ctas { display:flex; gap:12px }
+  .art { position:relative; height:540px }
+  .art .main { position:absolute; inset:0 0 0 40px; border-radius:28px; background:linear-gradient(160deg,var(--navy2),var(--navy)); overflow:hidden }
+  .art .main::before { content:""; position:absolute; width:520px; height:520px; border-radius:50%; border:60px solid rgba(141,169,196,.16); right:-200px; bottom:-220px }
+  .art .main::after { content:"Technician photo"; position:absolute; left:32px; top:30px; font-size:12px; letter-spacing:.16em; text-transform:uppercase; color:#8da9c4 }
+  .art .card { position:absolute; left:0; bottom:46px; background:#fff; border-radius:18px; padding:22px 24px; box-shadow:0 30px 60px rgba(11,37,69,.18); width:270px }
+  .art .card b { display:block; font-size:16px; color:var(--navy) }
+  .art .card span { font-size:13px; color:#6b7f96 }
+  .art .card .row { display:flex; gap:10px; margin-top:14px }
+  .art .card .row i { flex:1; height:8px; border-radius:4px; background:#e3ebf3 }
+  .art .card .row i:first-child { background:var(--red) }
+  .art .temp { position:absolute; right:24px; top:40px; background:#fff; border-radius:18px; padding:18px 22px; font-weight:800; font-size:34px; color:var(--navy); box-shadow:0 20px 40px rgba(0,0,0,.18) }
+  .art .temp small { display:block; font-size:12px; color:#6b7f96; font-weight:600 }
+  .svc { padding:110px 0 }
+  .head { text-align:center; max-width:640px; margin:0 auto 60px }
+  .eyebrow { font-size:13px; font-weight:700; letter-spacing:.2em; text-transform:uppercase; color:var(--red); margin-bottom:14px }
+  h2 { font-size:48px; letter-spacing:-.03em; line-height:1.08; font-weight:800; color:var(--navy) }
+  .cards { display:grid; grid-template-columns:repeat(4,1fr); gap:20px }
+  .c { border:1px solid #e3e9f0; border-radius:20px; padding:30px 26px 34px }
+  .c .ic { width:52px; height:52px; border-radius:14px; background:var(--ice); margin-bottom:22px; position:relative }
+  .c .ic::after { content:""; position:absolute; inset:16px; border-radius:50%; border:3px solid var(--red) }
+  .c h3 { font-size:20px; color:var(--navy); margin-bottom:10px }
+  .c p { color:#5a6e85; line-height:1.6; font-size:15px }
+  .band { background:var(--navy); color:#fff; padding:100px 0 }
+  .band .wrap { display:grid; grid-template-columns:1.1fr 1fr; gap:70px; align-items:center }
+  .band h2 { color:#fff }
+  .band p { color:#b6c6d8; line-height:1.7; margin:20px 0 30px; font-size:17px }
+  .steps { display:grid; gap:14px }
+  .steps div { background:var(--navy2); border-radius:16px; padding:22px 24px; display:flex; gap:18px; align-items:center }
+  .steps b { width:40px; height:40px; border-radius:50%; background:var(--red); display:grid; place-items:center; flex:none }
+  .rev { padding:110px 0; background:var(--ice) }
+  .quotes { display:grid; grid-template-columns:repeat(3,1fr); gap:20px }
+  .q { background:#fff; border-radius:20px; padding:32px; line-height:1.65; color:#33475e }
+  .q .s { color:#f5a524; letter-spacing:3px; margin-bottom:14px }
+  .q b { display:block; margin-top:18px; color:var(--navy) }
+  footer { background:var(--ink); color:#8da9c4; padding:60px 0; font-size:14px }
+  footer .wrap { display:flex; justify-content:space-between }
+  @media (max-width:720px) {
+    .top { display:none } nav { display:none } .wrap { padding:0 20px } header .wrap { height:70px } header .btn { padding:12px 16px; font-size:13px }
+    .hero { padding:44px 0 70px } .hero .wrap { grid-template-columns:1fr; gap:40px } h1 { font-size:44px } .lead { font-size:16px }
+    .ctas { flex-direction:column } .art { height:380px } .art .main { left:0 } .art .card { left:14px; bottom:18px }
+    .svc, .rev, .band { padding:70px 0 } h2 { font-size:34px } .cards, .quotes { grid-template-columns:1fr } .band .wrap { grid-template-columns:1fr; gap:40px }
+    footer .wrap { flex-direction:column; gap:10px }
+  }
+</style>
+</head>
+<body>
+<div class="top"><div class="wrap"><span>Plumbing · Heating · Water Heaters</span><span>Emergency line: (555) 000-0000</span></div></div>
+<header><div class="wrap">
+  <div class="logo"><i></i><div>BASCO<small>Plumbing &amp; Heating</small></div></div>
+  <nav><span>Plumbing</span><span>Heating</span><span>Water Heaters</span><span>About</span><span>Contact</span></nav>
+  <a class="btn">Schedule Service</a>
+</div></header>
+<section class="hero"><div class="wrap">
+  <div>
+    <div class="pill"><b></b> Booking appointments this week</div>
+    <h1>Comfort at home, <em>fixed fast.</em></h1>
+    <p class="lead">Repairs, installations and maintenance for plumbing and heating systems, from leaky faucets to full boiler replacements.</p>
+    <div class="ctas"><a class="btn">Book an Appointment →</a><a class="btn alt">See Our Services</a></div>
+  </div>
+  <div class="art">
+    <div class="main"></div>
+    <div class="temp"><small>Thermostat</small>70°</div>
+    <div class="card"><b>Service request received</b><span>A technician will confirm your time.</span><div class="row"><i></i><i></i><i></i></div></div>
+  </div>
+</div></section>
+<section class="svc"><div class="wrap">
+  <div class="head"><div class="eyebrow">What we do</div><h2>Plumbing and heating, handled start to finish</h2></div>
+  <div class="cards">
+    <div class="c"><div class="ic"></div><h3>Drain &amp; Sewer</h3><p>Clogs, camera inspections and line repairs without the guesswork.</p></div>
+    <div class="c"><div class="ic"></div><h3>Water Heaters</h3><p>Tank and tankless installs, flushes and repairs for reliable hot water.</p></div>
+    <div class="c"><div class="ic"></div><h3>Boilers &amp; Furnaces</h3><p>Heating system service that keeps your home warm all season.</p></div>
+    <div class="c"><div class="ic"></div><h3>Fixtures</h3><p>Faucets, toilets, showers and remodel rough-ins done neatly.</p></div>
+  </div>
+</div></section>
+<section class="band"><div class="wrap">
+  <div><div class="eyebrow">How it works</div><h2>Book online in under a minute</h2><p>Tell us what's going on, pick a time that works, and get a confirmation from our team. No phone tag required.</p><a class="btn">Start a Request →</a></div>
+  <div class="steps"><div><b>1</b>Describe the problem</div><div><b>2</b>Choose an arrival window</div><div><b>3</b>We confirm and show up</div></div>
+</div></section>
+<section class="rev"><div class="wrap">
+  <div class="head"><div class="eyebrow">Reviews</div><h2>What neighbors are saying</h2></div>
+  <div class="quotes">
+    <div class="q"><div class="s">★★★★★</div>Sample review text for layout purposes. Replace with a real customer review.<b>Customer name</b></div>
+    <div class="q"><div class="s">★★★★★</div>Sample review text for layout purposes. Replace with a real customer review.<b>Customer name</b></div>
+    <div class="q"><div class="s">★★★★★</div>Sample review text for layout purposes. Replace with a real customer review.<b>Customer name</b></div>
+  </div>
+</div></section>
+<footer><div class="wrap"><span>© Basco Plumbing &amp; Heating</span><span>Serving the local area</span></div></footer>
+</body>
+</html>

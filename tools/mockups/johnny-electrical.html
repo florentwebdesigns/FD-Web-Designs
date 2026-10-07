@@ -1,0 +1,124 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Johnny Electrical (placeholder mockup)</title>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Archivo:wght@400;600;800;900&family=Inter:wght@400;500;600&display=swap">
+<style>
+  :root { --ink:#0d0f12; --panel:#15181d; --line:#262a31; --amber:#ffb81c; --amber2:#ff8a00; --paper:#f4f2ee; --mut:#9aa1ab; }
+  * { box-sizing:border-box; margin:0; padding:0 }
+  body { font-family:Inter, sans-serif; background:var(--ink); color:#fff; -webkit-font-smoothing:antialiased }
+  .wrap { max-width:1240px; margin:0 auto; padding:0 40px }
+  header { display:flex; align-items:center; justify-content:space-between; padding:26px 40px; max-width:1320px; margin:0 auto }
+  .logo { font-family:Archivo; font-weight:900; font-size:22px; letter-spacing:-.02em; display:flex; gap:10px; align-items:center }
+  .bolt { width:34px; height:34px; background:var(--amber); clip-path:polygon(55% 0,10% 58%,45% 58%,35% 100%,90% 40%,55% 40%); }
+  nav { display:flex; gap:34px; font-size:14px; color:#cfd3d9 }
+  .btn { display:inline-flex; align-items:center; gap:10px; background:var(--amber); color:#111; font-weight:700; font-size:14px; padding:15px 24px; border-radius:4px; text-transform:uppercase; letter-spacing:.04em }
+  .btn.ghost { background:transparent; color:#fff; border:1px solid #3a3f48 }
+  .hero { position:relative; padding:90px 0 120px; overflow:hidden }
+  .hero::before { content:""; position:absolute; inset:0; background:
+     radial-gradient(800px 500px at 78% 40%, rgba(255,184,28,.18), transparent 60%),
+     repeating-linear-gradient(90deg, transparent 0 119px, rgba(255,255,255,.04) 119px 120px); }
+  .hero .wrap { position:relative; display:grid; grid-template-columns:1.15fr 1fr; gap:60px; align-items:center }
+  .tag { display:inline-flex; gap:8px; align-items:center; font-size:12px; letter-spacing:.18em; text-transform:uppercase; color:var(--amber); margin-bottom:26px }
+  .tag::before { content:""; width:28px; height:2px; background:var(--amber) }
+  h1 { font-family:Archivo; font-weight:900; font-size:84px; line-height:.92; letter-spacing:-.035em; text-transform:uppercase }
+  h1 span { color:var(--amber) }
+  .lead { color:#c4c9d1; font-size:18px; line-height:1.6; margin:28px 0 38px; max-width:520px }
+  .ctas { display:flex; gap:14px }
+  .visual { position:relative; height:520px; border-radius:6px; background:linear-gradient(160deg,#1d2128,#0f1115); border:1px solid var(--line); overflow:hidden }
+  .visual .panel { position:absolute; left:50%; top:50%; transform:translate(-50%,-50%); width:250px; height:330px; background:#22262e; border-radius:8px; border:1px solid #333944; display:grid; grid-template-columns:repeat(3,1fr); gap:10px; padding:22px }
+  .visual .panel i { display:block; height:34px; border-radius:3px; background:#2c313a; border-left:4px solid #3a404b }
+  .visual .panel i.on { border-left-color:var(--amber); box-shadow:0 0 22px rgba(255,184,28,.25) }
+  .visual .glow { position:absolute; width:420px; height:420px; border-radius:50%; background:radial-gradient(circle, rgba(255,184,28,.35), transparent 65%); right:-120px; top:-120px }
+  .visual .chip { position:absolute; left:26px; bottom:26px; background:#0d0f12cc; border:1px solid #333; padding:14px 18px; border-radius:6px; font-size:13px; color:#cfd3d9 }
+  .visual .chip b { display:block; color:#fff; font-size:15px; margin-bottom:2px }
+  .strip { border-top:1px solid var(--line); border-bottom:1px solid var(--line); background:var(--panel) }
+  .strip .wrap { display:flex; justify-content:space-between; padding-top:26px; padding-bottom:26px; font-family:Archivo; font-weight:800; font-size:15px; text-transform:uppercase; letter-spacing:.08em; color:#d9dce1 }
+  .strip span::before { content:"⚡"; color:var(--amber); margin-right:10px }
+  section.services { padding:120px 0; background:var(--paper); color:var(--ink) }
+  .sh { display:flex; justify-content:space-between; align-items:end; margin-bottom:56px }
+  h2 { font-family:Archivo; font-weight:900; font-size:56px; line-height:.95; letter-spacing:-.03em; text-transform:uppercase; max-width:620px }
+  .sh p { max-width:380px; color:#555b64; line-height:1.6 }
+  .grid { display:grid; grid-template-columns:repeat(3,1fr); gap:2px; background:#ddd9d2 }
+  .svc { background:var(--paper); padding:38px 34px 44px }
+  .svc .ic { width:46px; height:46px; background:var(--ink); border-radius:4px; margin-bottom:26px; position:relative }
+  .svc .ic::after { content:""; position:absolute; inset:12px; background:var(--amber); clip-path:polygon(55% 0,10% 58%,45% 58%,35% 100%,90% 40%,55% 40%) }
+  .svc h3 { font-family:Archivo; font-weight:800; font-size:22px; text-transform:uppercase; margin-bottom:12px }
+  .svc p { color:#5b616a; line-height:1.6; font-size:15px }
+  .split { padding:120px 0 }
+  .split .wrap { display:grid; grid-template-columns:1fr 1fr; gap:80px; align-items:center }
+  .ph { height:460px; border-radius:6px; background:linear-gradient(135deg,#252a32,#14171c); position:relative; overflow:hidden; border:1px solid var(--line) }
+  .ph::before { content:""; position:absolute; inset:0; background:repeating-linear-gradient(135deg, transparent 0 22px, rgba(255,184,28,.06) 22px 24px) }
+  .ph b { position:absolute; left:28px; bottom:24px; font-size:12px; letter-spacing:.16em; color:var(--mut); text-transform:uppercase }
+  .checks { margin-top:32px; display:grid; gap:16px }
+  .checks div { display:flex; gap:14px; color:#d4d8de; font-size:16px }
+  .checks div::before { content:"✓"; color:#111; background:var(--amber); width:24px; height:24px; border-radius:50%; display:grid; place-items:center; font-size:13px; font-weight:800; flex:none }
+  .cta { margin:0 40px 80px; border-radius:8px; background:linear-gradient(110deg,var(--amber),var(--amber2)); color:#111; padding:80px; display:flex; justify-content:space-between; align-items:center }
+  .cta h2 { font-size:60px }
+  .cta .btn { background:#111; color:#fff }
+  footer { border-top:1px solid var(--line); padding:50px 0; color:var(--mut); font-size:14px }
+  footer .wrap { display:flex; justify-content:space-between }
+  @media (max-width:720px) {
+    header { padding:20px } nav { display:none } header .btn { padding:11px 14px; font-size:12px }
+    .wrap { padding:0 20px }
+    .hero { padding:40px 0 70px } .hero .wrap { grid-template-columns:1fr; gap:40px }
+    h1 { font-size:50px } .lead { font-size:16px } .ctas { flex-direction:column } .visual { height:340px }
+    .strip .wrap { flex-direction:column; gap:12px; font-size:13px }
+    section.services, .split { padding:70px 0 } .sh { flex-direction:column; align-items:start; gap:16px } h2 { font-size:38px }
+    .grid { grid-template-columns:1fr } .split .wrap { grid-template-columns:1fr; gap:40px } .ph { height:300px }
+    .cta { margin:0 20px 50px; padding:40px 28px; flex-direction:column; align-items:start; gap:24px } .cta h2 { font-size:38px }
+    footer .wrap { flex-direction:column; gap:10px }
+  }
+</style>
+</head>
+<body>
+<header>
+  <div class="logo"><span class="bolt"></span>JOHNNY ELECTRICAL</div>
+  <nav><span>Services</span><span>About</span><span>Projects</span><span>Reviews</span><span>Contact</span></nav>
+  <a class="btn">Get a Free Quote</a>
+</header>
+<section class="hero">
+  <div class="wrap">
+    <div>
+      <div class="tag">Residential &amp; Commercial</div>
+      <h1>Power done <span>right.</span> The first time.</h1>
+      <p class="lead">Electrical installations, upgrades and repairs for homes and businesses, handled by a team that shows up on time and leaves the job clean.</p>
+      <div class="ctas"><a class="btn">Request Service →</a><a class="btn ghost">Call (555) 000-0000</a></div>
+    </div>
+    <div class="visual">
+      <div class="glow"></div>
+      <div class="panel"><i class="on"></i><i></i><i class="on"></i><i></i><i class="on"></i><i></i><i></i><i class="on"></i><i></i><i class="on"></i><i></i><i></i><i class="on"></i><i></i><i class="on"></i></div>
+      <div class="chip"><b>Same-week scheduling</b>Panel upgrades · EV chargers · Lighting</div>
+    </div>
+  </div>
+</section>
+<div class="strip"><div class="wrap"><span>Panel Upgrades</span><span>EV Chargers</span><span>Lighting Design</span><span>Rewiring</span><span>Troubleshooting</span></div></div>
+<section class="services">
+  <div class="wrap">
+    <div class="sh"><h2>Electrical services built around you</h2><p>From a single outlet to a full commercial fit-out, every job gets the same attention to detail and safety.</p></div>
+    <div class="grid">
+      <div class="svc"><div class="ic"></div><h3>Panel Upgrades</h3><p>Modern, code-compliant service panels sized for how you actually use power today.</p></div>
+      <div class="svc"><div class="ic"></div><h3>EV Charger Install</h3><p>Level 2 home charging installed cleanly, permitted and ready for your vehicle.</p></div>
+      <div class="svc"><div class="ic"></div><h3>Lighting</h3><p>Interior, exterior and landscape lighting designed to look great and save energy.</p></div>
+      <div class="svc"><div class="ic"></div><h3>Commercial</h3><p>Tenant improvements, service upgrades and maintenance for local businesses.</p></div>
+      <div class="svc"><div class="ic"></div><h3>Repairs</h3><p>Fast diagnostics for flickering lights, tripping breakers and dead circuits.</p></div>
+      <div class="svc"><div class="ic"></div><h3>Generators</h3><p>Standby generator hookups so your home stays powered when the grid doesn't.</p></div>
+    </div>
+  </div>
+</section>
+<section class="split">
+  <div class="wrap">
+    <div class="ph"><b>Project photo</b></div>
+    <div>
+      <div class="tag">Why homeowners call us</div>
+      <h2>Clear quotes. Clean work. No surprises.</h2>
+      <div class="checks"><div>Upfront pricing before any work starts</div><div>Tidy job sites and respectful crews</div><div>Work done to code with proper permits</div><div>Real people answering the phone</div></div>
+    </div>
+  </div>
+</section>
+<div class="cta"><h2>Need an electrician?</h2><a class="btn">Book a Visit →</a></div>
+<footer><div class="wrap"><span>© Johnny Electrical</span><span>Serving the local area</span></div></footer>
+</body>
+</html>

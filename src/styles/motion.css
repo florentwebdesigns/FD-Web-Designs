@@ -1,0 +1,64 @@
+/* Scroll + entrance animation states. Everything is fully visible by default;
+   hidden starting states apply only when script is running and the visitor
+   has not asked for reduced motion. */
+@media (prefers-reduced-motion: no-preference) {
+  /* Reveal on scroll */
+  .js [data-reveal] {
+    opacity: 0;
+    transform: translate3d(0, 28px, 0);
+    transition: opacity 1s var(--ease-out) var(--d, 0ms), transform 1.1s var(--ease-out) var(--d, 0ms);
+  }
+  .js [data-reveal].is-in { opacity: 1; transform: none; }
+
+  /* Split headings: lines rise from behind a mask */
+  .js [data-split] .line__inner {
+    transform: translate3d(0, 110%, 0) rotate(2deg);
+    transform-origin: 0 100%;
+    transition: transform 1.15s var(--ease-out) calc(var(--i, 0) * 90ms);
+  }
+  .js [data-split].is-in .line__inner { transform: none; }
+
+  /* Image mask reveal for case studies */
+  .js [data-mask] .browser {
+    clip-path: inset(14% 8% 14% 8% round 12px);
+    transition: clip-path 1.4s var(--ease-out), transform 1s var(--ease-out), box-shadow 1s var(--ease-out);
+  }
+  .js [data-mask] .browser__view picture { scale: 1.18; transition: scale 1.8s var(--ease-out); }
+  .js [data-mask] .phone { opacity: 0; transform: translate3d(0, 60px, 0); transition: opacity 1s var(--ease-out) 0.35s, transform 1.4s var(--ease-out) 0.35s; }
+  .js [data-mask].is-in .browser { clip-path: inset(0 0 0 0 round 12px); }
+  .js [data-mask].is-in .browser__view picture { scale: 1; }
+  .js [data-mask].is-in .phone { opacity: 1; transform: none; }
+  .js [data-mask].is-in:hover .phone { transform: translateY(-16px) rotate(-1.5deg); }
+
+  /* Hero entrance */
+  .js [data-intro] { opacity: 0; transform: translate3d(0, 22px, 0); }
+  .js .hero__title [data-intro] { opacity: 1; transform: translate3d(0, 112%, 0); }
+  .js.is-loaded [data-intro] {
+    opacity: 1; transform: none;
+    transition: opacity 0.9s var(--ease-out), transform 1.1s var(--ease-out);
+  }
+  .js.is-loaded .hero__title [data-intro] { transition: transform 1.2s var(--ease-out); }
+  .js.is-loaded [data-intro='0'] { transition-delay: 0.05s; }
+  .js.is-loaded [data-intro='1'] { transition-delay: 0.14s; }
+  .js.is-loaded [data-intro='2'] { transition-delay: 0.22s; }
+  .js.is-loaded [data-intro='3'] { transition-delay: 0.30s; }
+  .js.is-loaded [data-intro='4'] { transition-delay: 0.52s; }
+  .js.is-loaded [data-intro='5'] { transition-delay: 0.62s; }
+  .js.is-loaded [data-intro='6'] { transition-delay: 0.70s; }
+  .js.is-loaded [data-intro='7'] { transition-delay: 0.9s; }
+  .js .hero__fragments { opacity: 0; transition: opacity 1.6s ease 0.6s; }
+  .js.is-loaded .hero__fragments { opacity: 1; }
+  @media (max-width: 900px) { .js.is-loaded .hero__fragments { opacity: 0.55; } }
+}
+
+/* Reduced motion: stop ambient loops entirely. */
+@media (prefers-reduced-motion: reduce) {
+  *, *::before, *::after {
+    animation-duration: 0.001ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.001ms !important;
+    scroll-behavior: auto !important;
+  }
+  .hero__streak, .frag--cursor { display: none; }
+  .browser__scroll, .phone__scroll { transform: none !important; }
+}

@@ -1,0 +1,62 @@
+/* FD Web Designs design tokens.
+   Layout concept: a dark editorial exhibition. Large uppercase display type on a
+   12-column grid, hairline rules instead of boxes, light used as the accent. */
+:root {
+  color-scheme: dark;
+
+  /* Foundation */
+  --bg: #05060a;          /* near-black with a blue bias */
+  --bg-2: #080b16;
+  --navy: #0b1229;
+  --navy-2: #121b3c;
+  --surface: rgba(14, 22, 50, 0.55);
+
+  /* Text */
+  --text: #eef1fb;
+  --muted: #a3acc5;
+  --dim: #7c86a3;
+
+  /* Lines */
+  --line: rgba(160, 180, 255, 0.11);
+  --line-2: rgba(160, 180, 255, 0.2);
+  --line-3: rgba(200, 212, 255, 0.34);
+
+  /* Accents */
+  --blue: #2f5bff;        /* electric blue, white text passes AA */
+  --blue-2: #6b8dff;      /* blue for text on dark */
+  --cyan: #4fd8ff;
+  --violet: #6a4cf5;
+  --purple: #a77bff;
+  --danger: #ff8a9a;
+  --success: #5ef0b8;
+
+  --grad: linear-gradient(100deg, var(--cyan) 0%, var(--blue-2) 42%, var(--purple) 100%);
+  --grad-btn: linear-gradient(110deg, var(--blue) 0%, var(--violet) 100%);
+
+  /* Type */
+  --font-display: 'Space Grotesk', 'Helvetica Neue', Arial, sans-serif;
+  --font-body: 'Inter', system-ui, -apple-system, 'Segoe UI', Roboto, sans-serif;
+  --font-mono: 'JetBrains Mono', ui-monospace, 'SFMono-Regular', Menlo, monospace;
+
+  --fs-xs: 0.75rem;
+  --fs-sm: 0.875rem;
+  --fs-base: 1rem;
+  --fs-md: 1.125rem;
+  --fs-lg: clamp(1.25rem, 1.1rem + 0.6vw, 1.5rem);
+  --fs-xl: clamp(1.6rem, 1.2rem + 1.6vw, 2.5rem);
+  --fs-display: clamp(2.5rem, 1.2rem + 5.2vw, 6.25rem);
+  --fs-display-xl: clamp(2.6rem, 0.8rem + 7.2vw, 8rem);
+  --fs-hero: clamp(2.45rem, 0.6rem + 8.6vw, 9.6rem);
+
+  /* Space & layout */
+  --gutter: clamp(20px, 4vw, 56px);
+  --maxw: 1400px;
+  --section: clamp(96px, 12vw, 190px);
+  --nav-h: 76px;
+  --radius: 14px;
+
+  /* Motion */
+  --ease-out: cubic-bezier(0.16, 1, 0.3, 1);
+  --ease-io: cubic-bezier(0.65, 0, 0.35, 1);
+  --dur: 0.9s;
+}

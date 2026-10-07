@@ -1,0 +1,8 @@
+{
+  "name": "FD Web Designs LLC",
+  "short_name": "FD Web Designs",
+  "icons": [{ "src": "/apple-touch-icon.png", "sizes": "180x180", "type": "image/png" }, { "src": "/favicon.svg", "sizes": "any", "type": "image/svg+xml" }],
+  "theme_color": "#05060a",
+  "background_color": "#05060a",
+  "display": "browser"
+}
