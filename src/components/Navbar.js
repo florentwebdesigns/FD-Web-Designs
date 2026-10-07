@@ -27,7 +27,7 @@ export const Navbar = ({ site }) => `
     </ol>
     <div class="menu__foot">
       ${Button({ label: 'Book a Free Consultation', book: true })}
-      <ul class="menu__social">${each(site.socials, (s) => `<li><a href="${s.href}" aria-label="${s.label}">${icon(s.icon)}</a></li>`)}</ul>
+      <ul class="menu__social">${each(site.socials, (s) => `<li><a href="${s.href}" target="_blank" rel="noopener" aria-label="FD Web Designs on ${s.label} (opens in a new tab)">${icon(s.icon)}</a></li>`)}</ul>
     </div>
   </nav>
 </div>`;

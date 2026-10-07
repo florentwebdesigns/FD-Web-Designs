@@ -12,7 +12,7 @@ export const Testimonials = ({ testimonials }) => `
       ${SplitHeading(['What our', 'clients say'], { id: 't-title' })}
     </div>
 
-    <div class="t" data-testimonials aria-roledescription="carousel" aria-label="Client testimonials">
+    <div class="t" data-testimonials ${testimonials.length > 1 ? 'aria-roledescription="carousel" ' : ''}aria-label="Client testimonials">
       <div class="t__slides">
         ${each(testimonials, (t, i) => `
         <figure class="t__slide${i === 0 ? ' is-active' : ''}" data-slide aria-roledescription="slide" aria-label="${i + 1} of ${testimonials.length}">
@@ -26,14 +26,14 @@ export const Testimonials = ({ testimonials }) => `
         </figure>`)}
       </div>
 
-      <div class="t__controls">
+      ${testimonials.length > 1 ? `<div class="t__controls">
         <p class="t__count" aria-hidden="true"><span data-t-current>01</span> / ${pad(testimonials.length)}</p>
         <div class="t__progress" aria-hidden="true"><i data-t-progress></i></div>
         <div class="t__buttons">
           <button type="button" class="round-btn" data-t-prev aria-label="Previous testimonial">${icon('arrow', 'flip')}</button>
           <button type="button" class="round-btn" data-t-next aria-label="Next testimonial">${icon('arrow')}</button>
         </div>
-      </div>
+      </div>` : ''}
     </div>
   </div>
 </section>`;

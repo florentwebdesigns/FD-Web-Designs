@@ -24,7 +24,7 @@ export const WhyUs = ({ pillars }) => {
     <div class="why__about">
       <p class="why__kicker" data-reveal>About us</p>
       <div class="why__copy">
-        <p data-reveal>FD Web Designs LLC is a web design and development studio for local businesses and service-based companies. We design and build every site ourselves, from the first sketch to the launch, so the result looks like your business and works like a sales tool.</p>
+        <p data-reveal>FD Web Designs LLC is a web design and development studio that builds websites for any business, anywhere in the country. Contractors, salons, restaurants, professional services: we design and build every site ourselves, from the first sketch to the launch, so the result looks like your business and works like a sales tool.</p>
         <p data-reveal>Most people judge a business by its website before they ever call. We make sure that first look earns their trust.</p>
       </div>
     </div>

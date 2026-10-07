@@ -17,7 +17,7 @@ export const Footer = ({ site }) => `
       </nav>
       <div class="footer__social">
         <p class="footer__heading">Follow</p>
-        <ul class="socials" role="list">${each(site.socials, (s) => `<li><a href="${s.href}" aria-label="FD Web Designs on ${s.label}">${icon(s.icon)}</a></li>`)}</ul>
+        <ul class="socials" role="list">${each(site.socials, (s) => `<li><a href="${s.href}" target="_blank" rel="noopener" aria-label="FD Web Designs on ${s.label} (opens in a new tab)">${icon(s.icon)}</a></li>`)}</ul>
       </div>
     </div>
 

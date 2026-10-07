@@ -1,5 +1,5 @@
 // Adds .is-in to elements as they enter the viewport (once).
-const SELECTOR = '[data-reveal], [data-split], [data-mask], .pillar';
+const SELECTOR = '[data-reveal], [data-split], .pillar';
 
 export function initReveal() {
   const els = document.querySelectorAll(SELECTOR);

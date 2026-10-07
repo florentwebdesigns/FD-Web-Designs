@@ -12,7 +12,7 @@ const Tags = (services) => `<ul class="tags" aria-label="Services provided">${ea
 export const PortfolioCard = ({ project: p, index, total, layout }) => `
 <article class="case case--${layout}" id="case-${p.slug}" style="--accent:${p.accent}" aria-labelledby="case-${p.slug}-title">
   <div class="container case__grid">
-    <a class="case__media" href="#case-${p.slug}" data-open-project="${p.slug}" data-cursor="View" data-mask aria-label="Open the ${esc(p.name)} case study">
+    <a class="case__media" href="#case-${p.slug}" data-open-project="${p.slug}" data-cursor="View" data-reveal aria-label="Open the ${esc(p.name)} case study">
       ${BrowserFrame({ project: p, sizes: layout === 'featured' ? '(min-width: 1100px) 82vw, 94vw' : '(min-width: 1100px) 58vw, 94vw' })}
       ${PhoneFrame({ project: p })}
     </a>

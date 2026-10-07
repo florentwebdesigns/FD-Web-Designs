@@ -40,7 +40,7 @@ function structuredData() {
     makesOffer: services.slice(0, 6).map((s) => ({ '@type': 'Offer', itemOffered: { '@type': 'Service', name: s.name } })),
   };
   if (!isPlaceholder(site.email)) business.email = site.email;
-  if (!isPlaceholder(site.phone)) business.telephone = site.phone;
+  if (site.phones?.length) business.telephone = site.phones[0].tel;
   if (site.address.locality) {
     business.address = { '@type': 'PostalAddress', addressLocality: site.address.locality, addressRegion: site.address.region, addressCountry: site.address.country };
   }
@@ -102,7 +102,7 @@ ${Navbar({ site })}
   ${Process({ steps: processSteps })}
   ${Pricing({ plans })}
   ${Cinematic()}
-  ${Testimonials({ testimonials })}
+  ${Testimonials({ testimonials: testimonials.filter((t) => !t.placeholder) })}
   ${CTA()}
   ${ContactForm({ site, formOptions })}
 </main>

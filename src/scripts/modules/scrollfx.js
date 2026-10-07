@@ -1,27 +1,25 @@
 // Scroll-linked effects, computed in the shared frame loop and only for
 // elements currently near the viewport.
-import { motionOK, viewProgress, clamp, isMobile } from './env.js';
+import { motionOK, viewProgress, clamp } from './env.js';
 import { onFrame } from './ticker.js';
 
 export function initScrollFx() {
   initScreenshotScroll();
   if (!motionOK()) return;
 
-  const stage = document.querySelector('[data-stage]');
   const words = document.querySelector('[data-scrub-words]');
   const wordEls = words ? [...words.querySelectorAll('.w')] : [];
   const steps = document.querySelector('[data-process]');
   const stepEls = steps ? [...steps.querySelectorAll('[data-step]')] : [];
   const cineLines = [...document.querySelectorAll('[data-parallax]')];
   const cine = document.querySelector('[data-cine]');
-  const phones = [...document.querySelectorAll('.case__media .phone')];
 
   // Track which of these are near the viewport so off-screen work is skipped.
   const visible = new Set();
   const io = new IntersectionObserver((entries) => {
     entries.forEach((en) => (en.isIntersecting ? visible.add(en.target) : visible.delete(en.target)));
   }, { rootMargin: '20% 0px' });
-  [stage, words, steps, cine, ...phones].filter(Boolean).forEach((el) => io.observe(el));
+  [words, steps, cine].filter(Boolean).forEach((el) => io.observe(el));
 
   if (words) words.classList.add('is-scrubbing');
   if (steps) steps.classList.add('is-tracking');
@@ -32,12 +30,6 @@ export function initScrollFx() {
     const y = window.scrollY;
     if (y === lastY && innerWidth === lastW) return;
     lastY = y; lastW = innerWidth;
-
-    // Exhibition stage: tilted and stacked -> flat and fanned out.
-    if (stage && visible.has(stage)) {
-      const p = isMobile() ? 1 : viewProgress(stage, 1.0, 0.35);
-      stage.style.setProperty('--p', (1 - Math.pow(1 - p, 3)).toFixed(4));
-    }
 
     // Statement brightens word by word.
     if (words && visible.has(words)) {
@@ -65,13 +57,6 @@ export function initScrollFx() {
       cineLines.forEach((l) => l.style.setProperty('--py', `${(p * parseFloat(l.dataset.parallax)).toFixed(1)}px`));
     }
 
-    // Phones in case studies float slightly faster than the browser.
-    phones.forEach((ph) => {
-      if (!visible.has(ph)) return;
-      const r = ph.getBoundingClientRect();
-      const p = clamp((r.top + r.height / 2 - innerHeight / 2) / innerHeight, -1, 1);
-      ph.style.setProperty('--py', `${(p * -36).toFixed(1)}px`);
-    });
   });
 }
 

@@ -44,11 +44,11 @@ export const ContactForm = ({ site, formOptions }) => `
         <p class="contact__descriptor">${esc(site.descriptor)}</p>
         <ul class="contact__lines" role="list">
           ${ContactLine({ label: 'Email', value: site.email, href: `mailto:${site.email}`, iconName: 'mail' })}
-          ${ContactLine({ label: 'Phone', value: site.phone, href: `tel:${site.phone.replace(/[^\d+]/g, '')}`, iconName: 'phone' })}
+          ${each(site.phones, (ph) => ContactLine({ label: 'Phone', value: ph.display, href: `tel:${ph.tel}`, iconName: 'phone' }))}
           ${ContactLine({ label: 'Service area', value: site.serviceArea, iconName: 'globe' })}
         </ul>
-        <ul class="socials" role="list">
-          ${each(site.socials, (s) => `<li><a href="${s.href}" aria-label="FD Web Designs on ${s.label}">${icon(s.icon)}</a></li>`)}
+        <ul class="social-links" role="list">
+          ${each(site.socials, (s) => `<li><a href="${s.href}" target="_blank" rel="noopener">${icon(s.icon)}<span><b>${esc(s.label)}</b> ${esc(s.handle || '')}</span><span class="sr-only"> (opens in a new tab)</span></a></li>`)}
         </ul>
       </div>
 
@@ -89,7 +89,7 @@ export const ContactForm = ({ site, formOptions }) => `
           ${Field({ id: 'website', label: 'Current website (if any)', type: 'text', autocomplete: 'url', inputmode: 'url' })}
 
           ${Chips({ name: 'looking_for', legend: 'What are you looking for?', options: formOptions.lookingFor })}
-          ${Chips({ name: 'budget', legend: 'Budget range', options: formOptions.budgets, type: 'radio' })}
+          ${Chips({ name: 'package', legend: 'Package of interest', options: formOptions.packages, type: 'radio' })}
 
           <div class="field field--wide field--area">
             <textarea class="field__input" id="message" name="message" rows="4" placeholder=" " required aria-required="true" aria-describedby="message-error"></textarea>

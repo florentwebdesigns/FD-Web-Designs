@@ -42,7 +42,7 @@
 .phone--full .phone__screen { aspect-ratio: auto; max-height: none; }
 .phone--full .phone__scroll { position: relative; }
 
-/* ---------- Selected work: exhibition stage ---------- */
+/* ---------- Selected work ---------- */
 .preview { padding-bottom: clamp(60px, 8vw, 120px); overflow: hidden; }
 .preview__head {
   display: grid; grid-template-columns: minmax(0, 1.3fr) minmax(0, 1fr); gap: 32px 64px; align-items: end;
@@ -50,61 +50,30 @@
 }
 .preview__aside { display: grid; gap: 24px; justify-items: start; padding-bottom: 8px; }
 
-.stage { --p: 1; perspective: 2000px; perspective-origin: 50% 0%; }
 .stage__track {
-  position: relative;
-  height: clamp(340px, 40vw, 640px);
-  transform-style: preserve-3d;
-  transform: rotateX(calc((1 - var(--p)) * 22deg)) translateY(calc((1 - var(--p)) * 40px));
-  will-change: transform;
+  display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: clamp(16px, 2vw, 28px);
 }
-.stage__item {
-  --w: min(48vw, 780px);
-  position: absolute; left: 50%; top: 0;
-  width: var(--w);
-  margin-left: calc(var(--w) / -2);
-  transition: filter 0.6s;
-}
-.stage__item:nth-child(1) { z-index: 3; }
-.stage__item:nth-child(2) {
-  z-index: 2;
-  transform: translate3d(calc(var(--w) * (-0.18 - var(--p) * 0.36)), calc(var(--p) * 6%), calc(-140px + var(--p) * 40px)) rotateY(calc(16deg - var(--p) * 8deg));
-}
-.stage__item:nth-child(3) {
-  z-index: 1;
-  transform: translate3d(calc(var(--w) * (0.18 + var(--p) * 0.36)), calc(var(--p) * 12%), calc(-140px + var(--p) * 40px)) rotateY(calc(-16deg + var(--p) * 8deg));
-}
-.stage__item:nth-child(n+2) .browser { filter: brightness(calc(0.55 + var(--p) * 0.25)); transition: filter 0.6s; }
-.stage__item:hover .browser { filter: brightness(1); }
 .stage__link { display: block; position: relative; }
-.stage__link .browser__view { aspect-ratio: 16 / 10; }
-.stage__link .browser { transition: transform 0.8s var(--ease-out), filter 0.6s, box-shadow 0.8s var(--ease-out); }
-.stage__link:hover .browser { transform: translateY(-10px); box-shadow: 0 70px 120px -40px rgba(0, 0, 0, 0.95), 0 0 0 1px var(--line-3); }
+.stage__link .browser { transition: transform 0.6s var(--ease-out), box-shadow 0.6s var(--ease-out); }
+.stage__link:hover .browser { transform: translateY(-6px); box-shadow: 0 60px 100px -40px rgba(0, 0, 0, 0.95), 0 0 0 1px var(--line-3); }
 .stage__link:hover .browser__scroll { transform: translateY(var(--scroll-dist, 0)); }
 .stage__caption {
-  display: flex; justify-content: space-between; gap: 16px; padding: 16px 4px 0;
+  display: flex; flex-direction: column; gap: 4px; padding: 16px 2px 0;
   font-family: var(--font-mono); font-size: 0.6875rem; letter-spacing: 0.14em; text-transform: uppercase;
 }
-.stage__item:nth-child(-n+2) .stage__caption { flex-direction: column; align-items: flex-start; gap: 4px; }
-.stage__item:nth-child(3) .stage__caption { flex-direction: column; align-items: flex-end; gap: 4px; text-align: right; }
 .stage__name { color: var(--text); }
 .stage__industry { color: var(--dim); }
 
 @media (max-width: 800px) {
-  .stage__item:nth-child(n) .stage__caption { flex-direction: row; align-items: baseline; text-align: left; }
   .preview__head { grid-template-columns: 1fr; }
-  .stage { perspective: none; }
   .stage__track {
-    height: auto; transform: none;
     display: flex; gap: 14px; overflow-x: auto; scroll-snap-type: x mandatory;
-    padding: 0 var(--gutter) 12px; scrollbar-width: none;
+    padding-bottom: 12px; scrollbar-width: none;
   }
   .stage__track::-webkit-scrollbar { display: none; }
-  .stage__item, .stage__item:nth-child(n) {
-    position: relative; left: auto; margin: 0; transform: none;
-    flex: 0 0 84vw; width: 84vw; scroll-snap-align: center;
-  }
-  .stage__item:nth-child(n+2) .browser { filter: none; }
+  .stage { padding-inline: 0; }
+  .stage .stage__track { padding-inline: var(--gutter); scroll-padding-inline: var(--gutter); }
+  .stage__item { flex: 0 0 82vw; scroll-snap-align: start; }
 }
 
 /* ---------- Portfolio case studies ---------- */
@@ -122,7 +91,6 @@
 .case__media .phone {
   position: absolute; right: 0; bottom: 0; width: 21%;
   transition: transform 1s var(--ease-out);
-  translate: 0 var(--py, 0);
 }
 .case__media::after {
   content: ''; position: absolute; inset: 10% 15% 0 5%; z-index: -1;
@@ -130,10 +98,10 @@
   filter: blur(40px); opacity: 0; transition: opacity 1s;
 }
 .case__media:hover::after { opacity: 0.55; }
-.case__media:hover .browser { transform: translateY(-8px); }
+.case__media:hover .browser { transform: translateY(-4px); }
 .case__media:hover .browser__view picture { transform: scale(1.025); }
 .case__media:hover .browser__scroll, .case__media:hover .phone__scroll { transform: translateY(var(--scroll-dist, 0)); }
-.case__media:hover .phone { transform: translateY(-16px) rotate(-1.5deg); }
+.case__media:hover .phone { transform: translateY(-8px); }
 
 .case__info { grid-column: 9 / span 4; display: grid; gap: 24px; align-content: center; }
 .case--right .case__media { grid-column: 6 / span 7; order: 2; }

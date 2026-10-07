@@ -3,8 +3,8 @@ import { Eyebrow, SplitHeading } from './Button.js';
 import { icon } from './Icons.js';
 import { esc, each } from '../lib/html.js';
 
-// "Selected work": an exhibition stage of browser windows that flattens and
-// fans out as it scrolls into view. On phones it becomes a swipeable rail.
+// "Selected work": a clean row of browser previews, one per project.
+// On phones it becomes a swipeable rail.
 export const PortfolioPreview = ({ projects }) => `
 <section class="preview section" id="selected-work" aria-labelledby="preview-title">
   <div class="container preview__head">
@@ -13,12 +13,12 @@ export const PortfolioPreview = ({ projects }) => `
       ${SplitHeading(['We let the work', 'speak for itself.'], { id: 'preview-title' })}
     </div>
     <div class="preview__aside" data-reveal>
-      <p class="lede">From local service businesses to growing brands, we design websites that combine strong visual identity with real-world functionality.</p>
+      <p class="lede">From local service businesses to growing brands across the country, we design websites that combine strong visual identity with real-world functionality.</p>
       <a class="link-arrow" href="#work">Explore every project ${icon('arrow')}</a>
     </div>
   </div>
 
-  <div class="stage" data-stage>
+  <div class="stage container">
     <ul class="stage__track" role="list">
       ${each(projects.slice(0, 3), (p, i) => `
       <li class="stage__item" style="--n:${i}">

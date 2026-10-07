@@ -46,17 +46,17 @@ export const projects = [
   {
     slug: 'beauty-by-diella',
     name: 'Beauty by Diella',
-    industry: 'Beauty & Lash Studio',
+    industry: 'Makeup Artist · NJ & NYC',
     year: '', // [ADD YEAR] e.g. '2025'
-    accent: '#b76e5d',
-    image: 'beauty-by-diella',
-    url: '', // [ADD LIVE URL]
+    accent: '#c9a27e',
+    image: 'beauty-by-diella', // real screenshots of beautybydiella.com
+    url: 'https://beautybydiella.com/',
     description:
-      'An elegant, editorial website for a lash and beauty studio that feels as refined as the treatments themselves.',
+      'A dark, editorial website for makeup artist Diella Borici, serving New Jersey and New York City across bridal, editorial and special events.',
     challenge:
-      'The brand lived on social media. It needed a home that felt premium, showed off the work, and turned followers into booked appointments.',
+      'Her work lived on social media. She needed a home that felt as polished as her looks, showed the full range of her portfolio, and made booking simple.',
     approach:
-      'Soft cream and rose tones, a classic serif paired with clean sans-serif type, an easy service menu, and online booking front and center.',
-    services: ['Brand-Led Design', 'Development', 'Online Booking', 'Gallery', 'Mobile Responsive'],
+      'A cinematic dark palette with warm rose-gold light, elegant serif typography, a portfolio organized by category, and Book Now always one tap away.',
+    services: ['Custom Design', 'Development', 'Portfolio Gallery', 'Booking', 'Mobile Responsive'],
   },
 ];

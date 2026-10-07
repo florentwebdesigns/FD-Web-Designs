@@ -41,41 +41,47 @@ export const stats = [
   { display: '∞', label: 'Creative Possibilities' },
 ];
 
-// [ADD PRICING] Placeholder packages. Set names, prices and inclusions.
+// Packages. `trial` / `ads` add the free-trial and ads-included highlights.
 export const plans = [
   {
-    name: 'Launch',
-    price: '[ADD PRICE]',
-    cadence: 'one-time',
-    summary: 'A polished, professional site for businesses getting online the right way.',
-    features: ['Up to 5 custom-designed pages', 'Mobile responsive design', 'Contact form', 'SEO foundations', 'Google Business Profile link-up'],
+    name: 'Beginner',
+    setup: '$1,000',
+    monthly: '$500',
+    bestFor: 'Small businesses that need a professional online presence.',
+    features: ['3-page website', 'Mobile optimization', 'Click-to-call button', 'Contact / quote form', 'Fast loading', 'Basic SEO structure', 'Google Business Profile connection', 'Hosting & maintenance', 'Minor monthly edits'],
   },
   {
-    name: 'Growth',
-    price: '[ADD PRICE]',
-    cadence: 'one-time',
+    name: 'Intermediate',
+    setup: '$1,000',
+    monthly: '$1,000',
     featured: true,
-    summary: 'Our most popular package for businesses ready to generate more leads.',
-    features: ['Up to 10 custom-designed pages', 'Everything in Launch', 'Booking or quote request system', 'Conversion-focused copy structure', 'Analytics setup', 'Hosting & deployment'],
+    trial: true,
+    ads: true,
+    includesPrevious: 'Beginner',
+    bestFor: 'Established businesses looking to generate more calls and quote requests.',
+    features: ['5-page professional website', 'Individual service sections / pages', 'Service area section', 'FAQ section', 'Google review integration', 'Lead-focused layout', 'Conversion optimization', 'Monthly content edits', 'Hosting & maintenance'],
   },
   {
-    name: 'Signature',
-    price: '[ADD PRICE]',
-    cadence: 'starting at',
-    summary: 'A fully bespoke build with custom features and ongoing care.',
-    features: ['Unlimited pages, fully custom', 'Everything in Growth', 'Custom features & integrations', 'Advanced animation & interactions', 'Priority support', 'Ongoing maintenance options'],
+    name: 'Maximum Growth',
+    setup: '$1,000',
+    monthly: '$2,000',
+    trial: true,
+    ads: true,
+    includesPrevious: 'Intermediate',
+    bestFor: 'Businesses building a stronger online presence. The best option for maximum professionalism.',
+    features: ['8–10 page website', 'Individual pages for major services', 'Individual service-area pages', 'Advanced SEO structure', 'Google review integration', 'Lead / quote funnel', 'Conversion optimization', 'Analytics & lead tracking', 'Priority monthly updates', 'Hosting & maintenance'],
   },
 ];
 
-// [ADD REVIEWS] Placeholder testimonials. Replace with real client reviews
-// and set `placeholder: false`. Placeholder entries are labeled on the site.
+// Client reviews. Entries with `placeholder: true` are NOT shown on the site;
+// replace their text with a real review and set `placeholder: false`.
 export const testimonials = [
   {
     quote: 'FD Web Designs completely changed how our business looks online. The website feels professional, modern, and actually represents our company.',
-    name: 'Client Name',
-    company: 'Company Name',
+    name: "Basco's Plumbing & Heating",
+    company: 'Plumbing & Heating',
     rating: 5,
-    placeholder: true,
+    placeholder: false,
   },
   {
     quote: 'The entire process was smooth and the final website exceeded our expectations.',
@@ -97,5 +103,5 @@ export const testimonials = [
 export const formOptions = {
   businessTypes: ['Home Services / Trades', 'Beauty & Wellness', 'Restaurant & Hospitality', 'Professional Services', 'Retail / E-commerce', 'Health & Medical', 'Real Estate', 'Other'],
   lookingFor: ['New website', 'Website redesign', 'Booking system', 'SEO foundations', 'Maintenance', 'Something custom'],
-  budgets: ['Under $2k', '$2k–$5k', '$5k–$10k', '$10k+', 'Not sure yet'],
+  packages: ['Beginner', 'Intermediate', 'Maximum Growth', 'Not sure yet'],
 };

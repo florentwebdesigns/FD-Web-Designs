@@ -9,13 +9,17 @@ export const site = {
   url: 'https://www.fdwebdesigns.com', // [CONFIRM DOMAIN]
   title: 'FD Web Designs LLC | Premium Web Design & Development',
   description:
-    'FD Web Designs LLC creates premium, high-converting websites for businesses looking to build credibility, attract customers, and grow online.',
+    'FD Web Designs LLC creates premium, high-converting websites for businesses of every kind, nationwide. Build credibility, attract customers, and grow online.',
   ogImage: '/images/og-image.png',
   locale: 'en_US',
 
-  email: '[ADD BUSINESS EMAIL]',
-  phone: '[ADD BUSINESS PHONE]',
-  serviceArea: 'Serving businesses locally and nationwide.',
+  email: 'FDwebdesignz@gmail.com',
+  // Shown in order on the contact section; the first is used in structured data.
+  phones: [
+    { display: '(732) 850-2086', tel: '+17328502086' },
+    { display: '(973) 609-9663', tel: '+19736099663' },
+  ],
+  serviceArea: 'Websites for every kind of business, nationwide.',
   address: {
     // Optional. Fill in to strengthen local SEO, or leave blank to omit.
     locality: '',
@@ -24,10 +28,10 @@ export const site = {
   },
 
   socials: [
-    { label: 'Instagram', href: '#', icon: 'instagram' }, // [ADD INSTAGRAM URL]
-    { label: 'Facebook', href: '#', icon: 'facebook' }, // [ADD FACEBOOK URL]
-    { label: 'TikTok', href: '#', icon: 'tiktok' }, // [ADD TIKTOK URL]
-    { label: 'LinkedIn', href: '#', icon: 'linkedin' }, // [ADD LINKEDIN URL]
+    { label: 'Instagram', handle: '@fdwebdesigns_LLC', href: 'https://www.instagram.com/fdwebdesigns_llc/', icon: 'instagram' },
+    // [CONFIRM] Replace with the Facebook page's direct URL (facebook.com/yourpage).
+    { label: 'Facebook', handle: 'FD Web Designs', href: 'https://www.facebook.com/search/top?q=FD%20Web%20Designs', icon: 'facebook' },
+    // Add TikTok / LinkedIn here when those accounts exist (icons: 'tiktok', 'linkedin').
   ],
 
   nav: [

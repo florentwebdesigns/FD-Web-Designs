@@ -58,6 +58,6 @@ export const Hero = () => `
   <div class="hero__meta container" data-intro="7">
     <span>Web Design &amp; Development</span>
     <a class="scroll-cue" href="#selected-work"><span class="scroll-cue__track" aria-hidden="true"><i></i></span><span>Scroll to explore</span></a>
-    <span>Local &amp; Nationwide</span>
+    <span>Every Industry · Nationwide</span>
   </div>
 </section>`;

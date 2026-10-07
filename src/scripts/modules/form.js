@@ -98,6 +98,8 @@ export function initForm() {
   // "Choose <plan>" buttons prefill the message.
   document.querySelectorAll('[data-plan]').forEach((btn) => btn.addEventListener('click', () => {
     setIntent('project');
+    const pkg = form.querySelector(`[name="package"][value="${btn.dataset.plan}"]`);
+    if (pkg) pkg.checked = true;
     const msg = form.elements.message;
     const line = `I'm interested in the ${btn.dataset.plan} package.`;
     if (!msg.value.includes(line)) msg.value = msg.value ? `${line}\n\n${msg.value}` : `${line} `;

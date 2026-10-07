@@ -67,7 +67,7 @@ contact form with "Book a call" selected.
 
 Set `site.form.endpoint` to a form backend (Formspree, Basin, Getform, or your
 own API). The form POSTs JSON with: `intent`, `start`, `name`, `business`,
-`email`, `phone`, `business_type`, `website`, `looking_for[]`, `budget`,
+`email`, `phone`, `business_type`, `website`, `looking_for[]`, `package`,
 `message`. While the endpoint is empty the form runs in demo mode (validates,
 shows the success state, logs the data to the console). Includes a honeypot
 field for basic spam filtering.
