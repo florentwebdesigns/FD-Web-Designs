@@ -59,8 +59,8 @@ placeholders** made in `tools/mockups/`. Swap them for real screenshots.
 ### Booking
 
 Set `site.booking.url` to a Calendly / Cal.com / TidyCal link and every
-"Book a call" button opens it. While it's empty, those buttons scroll to the
-contact form with "Book a call" selected.
+"Book a Free Consultation" button opens it. While it's empty, those buttons scroll to the
+contact form with "Schedule a meeting" selected. "Call to Schedule a Meeting" buttons dial the first number in `site.phones`.
 
 ### Contact form
 

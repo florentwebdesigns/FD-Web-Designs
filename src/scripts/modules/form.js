@@ -121,7 +121,7 @@ export function initForm() {
   }));
 
   // Booking buttons: open the scheduling link if configured, otherwise jump to
-  // the form with "Book a call" selected.
+  // the form with "Schedule a meeting" selected.
   document.addEventListener('click', (e) => {
     const btn = e.target.closest('[data-book]');
     if (!btn) return;
