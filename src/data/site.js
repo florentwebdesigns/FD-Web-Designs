@@ -29,8 +29,7 @@ export const site = {
 
   socials: [
     { label: 'Instagram', handle: '@fdwebdesigns_LLC', href: 'https://www.instagram.com/fdwebdesigns_llc/', icon: 'instagram' },
-    // [CONFIRM] Replace with the Facebook page's direct URL (facebook.com/yourpage).
-    { label: 'Facebook', handle: 'FD Web Designs', href: 'https://www.facebook.com/search/top?q=FD%20Web%20Designs', icon: 'facebook' },
+    { label: 'Facebook', handle: 'FD Web Designs', href: 'https://www.facebook.com/FDWebDesignsLLC', icon: 'facebook' },
     // Add TikTok / LinkedIn here when those accounts exist (icons: 'tiktok', 'linkedin').
   ],
 

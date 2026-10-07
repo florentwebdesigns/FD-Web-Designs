@@ -30,18 +30,18 @@ export const projects = [
   {
     slug: 'basco-plumbing-heating',
     name: 'Basco Plumbing & Heating',
-    industry: 'Plumbing & HVAC',
+    industry: 'Plumbing & Heating · South Orange, NJ',
     year: '', // [ADD YEAR] e.g. '2025'
-    accent: '#e4572e',
+    accent: '#e8772e',
     image: 'basco-plumbing',
     url: '', // [ADD LIVE URL]
     description:
-      'A clean, trustworthy website for a plumbing and heating company, centered on fast online booking and clear service information.',
+      'A dark, trustworthy website for a family plumbing and heating company serving South Orange, Maplewood and Short Hills since 2012.',
     challenge:
-      'Homeowners with a leak or a cold house want answers fast. The old experience made them call and wait to find out what was offered.',
+      'Homeowners with a leak or a cold house want answers fast, and they want to know they are calling someone local they can trust.',
     approach:
-      'A calm navy palette with a warm accent, an emergency line always in view, and a three-step booking flow that removes phone tag.',
-    services: ['Website Redesign', 'Booking System', 'Mobile Responsive', 'Google Business Profile'],
+      'A deep navy palette with a warm orange accent, the phone number and booking button always in reach, real customer reviews up front, and a simple online booking form.',
+    services: ['Custom Design', 'Development', 'Booking Form', 'Review Showcase', 'Mobile Responsive'],
   },
   {
     slug: 'beauty-by-diella',

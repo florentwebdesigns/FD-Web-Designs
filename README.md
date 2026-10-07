@@ -39,7 +39,6 @@ Search the `src/data` folder for `[` to find them:
 - **Pricing**: `plans[].price` in `content.js`. Unfilled prices display `[ADD PRICE]`.
 - **Testimonials**: replace the quotes, names and companies, and set `placeholder: false`
   (placeholder reviews are labeled "Placeholder review" on the page).
-- **Stats**: confirm the "20+ websites built" figure.
 - **Project years and live URLs**: `year` and `url` in `projects.js`.
 
 ### Adding a portfolio project

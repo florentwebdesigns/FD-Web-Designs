@@ -35,7 +35,7 @@ export const processSteps = [
 // [CONFIRM] Replace with your real numbers before launch. Only publish
 // figures you can stand behind.
 export const stats = [
-  { value: 20, suffix: '+', label: 'Websites Built' },
+  { value: 5, suffix: '+', label: 'Websites Built' },
   { value: 100, suffix: '%', label: 'Custom Designed' },
   { display: '24/7', label: 'Online Presence' },
   { display: '∞', label: 'Creative Possibilities' },
