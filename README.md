@@ -24,7 +24,7 @@ Deploy `dist/` to any static host. This repo is set up for Vercel (`vercel.json`
 | Business email, phone, socials, domain, booking link, form endpoint | `src/data/site.js` |
 | Portfolio projects | `src/data/projects.js` |
 | Services, pillars, process, stats, pricing, testimonials, form options | `src/data/content.js` |
-| Page order / SEO head / structured data | `src/pages/index.js` |
+| Pages (home, portfolio), SEO head, structured data | `src/pages/index.js` |
 | Section markup | `src/components/*.js` |
 | Colors, fonts, spacing tokens | `src/styles/tokens.css` |
 

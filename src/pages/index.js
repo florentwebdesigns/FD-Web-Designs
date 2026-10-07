@@ -1,4 +1,4 @@
-// Composes the home page from components and data.
+// Composes the pages (home, portfolio) from components and data.
 import { site } from '../data/site.js';
 import { projects } from '../data/projects.js';
 import { services, pillars, processSteps, stats, plans, testimonials, formOptions } from '../data/content.js';
@@ -50,27 +50,29 @@ function structuredData() {
 }
 
 /** <head> contents (without the <head> tag itself). */
-export function renderHead({ css = '', inlineCss = '' } = {}) {
+export function renderHead({ css = '', inlineCss = '', page = 'home' } = {}) {
+  const title = page === 'portfolio' ? `Portfolio | ${site.shortName}` : site.title;
+  const path = page === 'portfolio' ? '/portfolio' : '/';
   return `
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
-<title>${esc(site.title)}</title>
+<title>${esc(title)}</title>
 <meta name="description" content="${esc(site.description)}">
-<link rel="canonical" href="${site.url}/">
+<link rel="canonical" href="${site.url}${path}">
 <meta name="theme-color" content="#05060a">
 <meta name="color-scheme" content="dark">
 
 <meta property="og:type" content="website">
 <meta property="og:site_name" content="${esc(site.name)}">
-<meta property="og:title" content="${esc(site.title)}">
+<meta property="og:title" content="${esc(title)}">
 <meta property="og:description" content="${esc(site.description)}">
-<meta property="og:url" content="${site.url}/">
+<meta property="og:url" content="${site.url}${path}">
 <meta property="og:image" content="${site.url}${site.ogImage}">
 <meta property="og:image:width" content="1200">
 <meta property="og:image:height" content="630">
 <meta property="og:locale" content="${site.locale}">
 <meta name="twitter:card" content="summary_large_image">
-<meta name="twitter:title" content="${esc(site.title)}">
+<meta name="twitter:title" content="${esc(title)}">
 <meta name="twitter:description" content="${esc(site.description)}">
 <meta name="twitter:image" content="${site.url}${site.ogImage}">
 
@@ -86,16 +88,15 @@ ${inlineCss ? `<style>${inlineCss}</style>` : ''}
 <script type="application/ld+json">${structuredData()}</script>`;
 }
 
-/** Everything inside <body>. */
-export function renderBody() {
-  return `
-<a class="skip-link" href="#main">Skip to content</a>
-<div class="ambient" aria-hidden="true"><div class="ambient__glow" data-glow></div><div class="ambient__noise"></div></div>
-${Navbar({ site })}
-<main id="main">
-  ${Hero()}
+/** Everything inside <body>. `portfolioHref` is where "Our Work" links point
+ *  ('portfolio' on the live site, 'portfolio.html' in the file-based preview). */
+export function renderBody({ page = 'home', portfolioHref = 'portfolio' } = {}) {
+  const sections = page === 'portfolio'
+    ? `${Portfolio({ projects })}
+  ${CTA()}
+  ${ContactForm({ site, formOptions })}`
+    : `${Hero()}
   ${PortfolioPreview({ projects })}
-  ${Portfolio({ projects })}
   ${Services({ services })}
   ${WhyUs({ pillars })}
   ${Stats({ stats })}
@@ -104,10 +105,27 @@ ${Navbar({ site })}
   ${Cinematic()}
   ${Testimonials({ testimonials: testimonials.filter((t) => !t.placeholder) })}
   ${CTA()}
-  ${ContactForm({ site, formOptions })}
+  ${ContactForm({ site, formOptions })}`;
+  let html = `
+<a class="skip-link" href="#main">Skip to content</a>
+<div class="ambient" aria-hidden="true"><div class="ambient__glow" data-glow></div><div class="ambient__noise"></div></div>
+${Navbar({ site })}
+<main id="main">
+  ${sections}
 </main>
 ${Footer({ site })}
 ${CaseStudyDialog({ projects })}
 <div class="cursor" aria-hidden="true" data-cursor-el><span data-cursor-label>View</span></div>
 <script id="site-config" type="application/json">${JSON.stringify({ booking: site.booking, form: site.form })}</script>`;
+  // "Our Work" links go to the portfolio page.
+  html = html.replaceAll('href="#work"', `href="${portfolioHref}"`);
+  if (page === 'portfolio') {
+    // Links to home-page sections point back to the home page.
+    html = html
+      .replace(/href="#(services|process|about|pricing|selected-work)"/g, 'href="./#$1"')
+      .replaceAll('href="#top"', 'href="./"')
+      .replace('class="footer__top-link" href="./"', 'class="footer__top-link" href="#top"')
+      .replace(`href="${portfolioHref}" data-nav-link`, `href="${portfolioHref}" data-nav-link aria-current="page"`);
+  }
+  return html;
 }

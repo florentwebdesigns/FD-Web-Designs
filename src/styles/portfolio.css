@@ -211,3 +211,6 @@
   .study__details { grid-template-columns: 1fr; }
   .dialog { width: 100%; height: 100%; border-radius: 0; border: 0; }
 }
+
+/* Portfolio page: leave room for the fixed nav above the heading. */
+main > .work:first-child { padding-top: clamp(120px, 14vw, 180px); }

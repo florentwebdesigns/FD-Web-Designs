@@ -38,16 +38,18 @@ async function buildDist() {
   cpSync('public', 'dist', { recursive: true, filter: (src) => !src.endsWith('manifest.json') });
   writeFileSync('dist/assets/app.css', css);
   writeFileSync('dist/assets/app.js', js);
-  writeFileSync('dist/index.html', `<!doctype html>
+  for (const [name, file] of [['home', 'index.html'], ['portfolio', 'portfolio.html']]) {
+    writeFileSync(`dist/${file}`, `<!doctype html>
 <html lang="en" class="no-js">
-<head>${page.renderHead({ css: 'assets/app.css' })}
+<head>${page.renderHead({ css: '/assets/app.css', page: name })}
 <script>document.documentElement.classList.replace('no-js','js');setTimeout(function(){if(!window.__fdReady)document.documentElement.classList.remove('js')},3000)</script>
 </head>
-<body>${page.renderBody()}
-<script src="assets/app.js" defer></script>
+<body>${page.renderBody({ page: name })}
+<script src="/assets/app.js" defer></script>
 </body>
 </html>
 `);
+  }
   console.log(`dist/ built  css ${(css.length / 1024).toFixed(1)}kB  js ${(js.length / 1024).toFixed(1)}kB`);
 }
 
@@ -63,10 +65,23 @@ async function buildPreview() {
     .replace(/<meta charset[^>]*>\s*/, '')
     .replace(/<meta name="viewport"[^>]*>\s*/, '')
     .replace(/<link rel="(icon|apple-touch-icon|manifest|canonical)"[^>]*>\s*/g, '');
+  const script = `<script>${js.replace(/<\/script/g, '<\\/script')}</script>`;
+  const jsFlag = `<script>document.documentElement.classList.add('js');setTimeout(function(){if(!window.__fdReady)document.documentElement.classList.remove('js')},3000)</script>`;
   writeFileSync('preview/index.html', `${head}
-<script>document.documentElement.classList.add('js');setTimeout(function(){if(!window.__fdReady)document.documentElement.classList.remove('js')},3000)</script>
-${page.renderBody()}
-<script>${js.replace(/<\/script/g, '<\\/script')}</script>
+${jsFlag}
+${page.renderBody({ portfolioHref: 'portfolio.html' })}
+${script}
+`);
+  // Extra pages are served as-is (not wrapped), so they need a full document.
+  writeFileSync('preview/portfolio.html', `<!doctype html>
+<html lang="en">
+<head>${page.renderHead({ inlineCss: css, page: 'portfolio' }).replace(/<link rel="(icon|apple-touch-icon|manifest|canonical)"[^>]*>\s*/g, '')}
+${jsFlag}
+</head>
+<body>${page.renderBody({ page: 'portfolio', portfolioHref: 'portfolio.html' })}
+${script}
+</body>
+</html>
 `);
   console.log('preview/ built');
 }
@@ -79,6 +94,7 @@ if (DEV) {
   createServer((req, res) => {
     let path = decodeURIComponent(req.url.split('?')[0]);
     if (path.endsWith('/')) path += 'index.html';
+    else if (!extname(path)) path += '.html';
     try {
       const body = readFileSync(join('dist', path));
       res.writeHead(200, { 'content-type': types[extname(path)] || 'application/octet-stream' });
