@@ -84,6 +84,13 @@ export const testimonials = [
     placeholder: false,
   },
   {
+    quote: 'My website finally looks as polished as my work. It is elegant, easy for clients to browse, and booking with me has never been simpler. I could not be happier.',
+    name: 'Beauty by Diella',
+    company: 'Makeup Artist',
+    rating: 5,
+    placeholder: false,
+  },
+  {
     quote: 'The entire process was smooth and the final website exceeded our expectations.',
     name: 'Client Name',
     company: 'Company Name',

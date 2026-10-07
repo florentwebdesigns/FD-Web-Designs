@@ -50,9 +50,12 @@ export const site = {
     url: '',
   },
 
-  // Contact form: set `endpoint` to a form backend (Formspree, Basin, Getform,
-  // your own API, ...). The form POSTs JSON. Leave empty to run in demo mode.
+  // Contact / booking form: on submit it opens the visitor's messages app with
+  // their details filled in, addressed to `smsTo`. Optionally also set
+  // `endpoint` to a form backend (Formspree, Basin, ...) to receive a JSON copy.
   form: {
+    smsTo: '+17328502086',
+    smsDisplay: '(732) 850-2086',
     endpoint: '',
   },
 };

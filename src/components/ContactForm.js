@@ -104,15 +104,15 @@ export const ContactForm = ({ site, formOptions }) => `
             <span class="btn__label" data-submit-label>Start My Project</span>
             <span class="btn__icon">${icon('arrow')}</span>
           </button>
-          <p class="form__fine">We reply within one business day. Your details are never shared.</p>
+          <p class="form__fine">Sends as a text to ${esc(site.form.smsDisplay)}. We reply within one business day.</p>
         </div>
         <p class="form__status" role="status" aria-live="polite" data-form-status></p>
       </form>
 
       <div class="form-success" data-form-success hidden tabindex="-1">
         <span class="form-success__icon">${icon('check')}</span>
-        <h3>Thanks, we've got it.</h3>
-        <p>Your project details are on their way to our team. We'll be in touch within one business day.</p>
+        <h3>Almost done, just press send.</h3>
+        <p>Your details are ready in your messages app. Press send and we'll get back to you within one business day. If nothing opened, text or call us at <a href="tel:${site.form.smsTo}">${esc(site.form.smsDisplay)}</a>.</p>
         <button class="link-arrow" type="button" data-form-reset>Send another message ${icon('arrow')}</button>
       </div>
     </div>

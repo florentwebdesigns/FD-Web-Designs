@@ -8,13 +8,12 @@ import { initPointer, initMagnetic } from './modules/pointer.js';
 import { initHeroField } from './modules/heroField.js';
 import { initScrollFx } from './modules/scrollfx.js';
 import { initCounters } from './modules/counters.js';
-import { initTestimonials } from './modules/testimonials.js';
 import { initProjectDialog } from './modules/projectDialog.js';
 import { initForm } from './modules/form.js';
 
 window.__fdReady = true;
 
-const modules = [initScroll, initIntro, initNav, initReveal, initHeroField, initScrollFx, initPointer, initMagnetic, initCounters, initTestimonials, initProjectDialog, initForm];
+const modules = [initScroll, initIntro, initNav, initReveal, initHeroField, initScrollFx, initPointer, initMagnetic, initCounters, initProjectDialog, initForm];
 for (const init of modules) {
   try { init(); } catch (err) { console.error(`[FD] ${init.name} failed`, err); }
 }

@@ -64,11 +64,11 @@ contact form with "Book a call" selected.
 
 ### Contact form
 
-Set `site.form.endpoint` to a form backend (Formspree, Basin, Getform, or your
+On submit the form opens the visitor's messages app with their details, addressed to `site.form.smsTo`. Optionally set `site.form.endpoint` to a form backend (Formspree, Basin, Getform, or your
 own API). The form POSTs JSON with: `intent`, `start`, `name`, `business`,
 `email`, `phone`, `business_type`, `website`, `looking_for[]`, `package`,
-`message`. While the endpoint is empty the form runs in demo mode (validates,
-shows the success state, logs the data to the console). Includes a honeypot
+`message`. Without an endpoint nothing is stored online; the text message is the only copy (the form still validates,
+and shows the success state). Includes a honeypot
 field for basic spam filtering.
 
 ## Architecture

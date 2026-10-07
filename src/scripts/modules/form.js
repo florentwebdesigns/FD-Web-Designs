@@ -6,6 +6,23 @@ import { scrollToEl } from './scroll.js';
 
 const EMAIL = /^[^\s@]+@[^\s@]+\.[^\s@]{2,}$/;
 
+function smsLink(to, d) {
+  const lines = [
+    d.intent === 'call' ? 'Hi FD Web Designs, I would like to book a call.' : 'Hi FD Web Designs, I would like to start a website project.',
+    '',
+    `Name: ${d.name}`,
+    d.business && `Business: ${d.business}`,
+    `Email: ${d.email}`,
+    d.phone && `Phone: ${d.phone}`,
+    d.business_type && `Business type: ${d.business_type}`,
+    d.website && `Current website: ${d.website}`,
+    d.looking_for.length && `Looking for: ${d.looking_for.join(', ')}`,
+    d.package && `Package: ${d.package}`,
+    `Details: ${d.message}`,
+  ].filter((l, i) => i === 1 || Boolean(l));
+  return `sms:${to}?&body=${encodeURIComponent(lines.join('\n'))}`;
+}
+
 export function initForm() {
   const form = document.querySelector('[data-form]');
   if (!form) return;
@@ -71,11 +88,9 @@ export function initForm() {
           body: JSON.stringify(data),
         });
         if (!res.ok) throw new Error(`Request failed (${res.status})`);
-      } else {
-        // Demo mode: no endpoint configured in src/data/site.js yet.
-        console.info('[FD Web Designs] Form demo mode. Set site.form.endpoint to receive submissions.', data);
-        await new Promise((r) => setTimeout(r, 900));
       }
+      // The request goes to our phone as a text, sent from the visitor's own messages app.
+      if (config.form?.smsTo) window.location.href = smsLink(config.form.smsTo, data);
       form.hidden = true;
       success.hidden = false;
       success.focus();
