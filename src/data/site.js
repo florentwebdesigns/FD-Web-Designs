@@ -59,6 +59,6 @@ export const site = {
     smsTo: '+17328502086',
     smsDisplay: '(732) 850-2086',
     endpoint: '',
-    sheetLog: '',
+    sheetLog: 'https://script.google.com/macros/s/AKfycbyaUMmbt77pEyOp4hqXfcxbaySPVMfvjSzRTP3CHx4uZLfJ5PQneQxr88q-Pg1xqz_P/exec',
   },
 };
