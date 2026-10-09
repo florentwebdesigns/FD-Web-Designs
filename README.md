@@ -53,8 +53,9 @@ Search the `src/data` folder for `[` to find them:
    `python3 tools/optimize-images.py`. It resizes, converts and records image sizes.
 3. Rebuild. The project appears in the showcase and gets its own case-study view.
 
-The current Johnny Electrical, Basco and Beauty by Diella images are **design
-placeholders** made in `tools/mockups/`. Swap them for real screenshots.
+The portfolio shows real screenshots of Rays HVAC, Select Plumbing, Basco and
+Beauty by Diella, captured with `node tools/capture-site.mjs <url-or-index.html> <image-name>`
+and then `python3 tools/optimize-images.py`.
 
 ### Booking
 

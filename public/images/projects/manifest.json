@@ -31,19 +31,35 @@
     780,
     3276
   ],
-  "johnny-electrical-desktop-1440.webp": [
+  "rays-hvac-desktop-1440.webp": [
     1440,
-    3046
+    3456
   ],
-  "johnny-electrical-desktop-800.webp": [
+  "rays-hvac-desktop-800.webp": [
     800,
-    1692
+    1920
   ],
-  "johnny-electrical-mobile-400.webp": [
+  "rays-hvac-mobile-400.webp": [
     400,
     1680
   ],
-  "johnny-electrical-mobile-780.webp": [
+  "rays-hvac-mobile-780.webp": [
+    780,
+    3276
+  ],
+  "select-plumbing-desktop-1440.webp": [
+    1440,
+    3456
+  ],
+  "select-plumbing-desktop-800.webp": [
+    800,
+    1920
+  ],
+  "select-plumbing-mobile-400.webp": [
+    400,
+    1680
+  ],
+  "select-plumbing-mobile-780.webp": [
     780,
     3276
   ]

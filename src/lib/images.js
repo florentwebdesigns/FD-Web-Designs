@@ -10,7 +10,7 @@ const WIDTHS = { desktop: [800, 1440], mobile: [400, 780] };
 
 /**
  * <picture> for a project screenshot.
- * @param {string} base    image base name, e.g. "johnny-electrical"
+ * @param {string} base    image base name, e.g. "rays-hvac"
  * @param {'desktop'|'mobile'} variant
  * @param {string} alt
  * @param {string} sizes   sizes attribute

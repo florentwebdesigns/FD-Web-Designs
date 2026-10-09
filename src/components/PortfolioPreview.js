@@ -20,7 +20,7 @@ export const PortfolioPreview = ({ projects }) => `
 
   <div class="stage container">
     <ul class="stage__track" role="list">
-      ${each(projects.slice(0, 3), (p, i) => `
+      ${each(projects, (p, i) => `
       <li class="stage__item" style="--n:${i}">
         <a class="stage__link" href="#case-${p.slug}" data-open-project="${p.slug}" data-cursor="View">
           ${BrowserFrame({ project: p, sizes: '(min-width: 900px) 46vw, 84vw', eager: i === 0 })}

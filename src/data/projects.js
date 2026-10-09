@@ -4,28 +4,43 @@
 //   <image>-desktop-800.webp / -1440.webp (+ .avif) for the desktop screenshot
 //   <image>-mobile-400.webp  / -780.webp  (+ .avif) for the phone screenshot
 // tools/capture-mockups.mjs + tools/optimize-images.py generate them for you.
-// The current images are design placeholders: swap in real screenshots.
 //
 // `featured: true` puts the project in the large lead slot.
 // `url` is the live website. Leave it empty to hide the "Visit live site" link.
 
 export const projects = [
   {
-    slug: 'johnny-electrical',
-    name: 'Johnny Electrical',
-    industry: 'Electrical Contractor',
+    slug: 'rays-hvac',
+    name: 'Rays HVAC',
+    industry: 'Heating & Air Conditioning',
     year: '', // [ADD YEAR] e.g. '2025'
     featured: true,
-    accent: '#ffb81c',
-    image: 'johnny-electrical',
+    accent: '#3d8bff',
+    image: 'rays-hvac',
     url: '', // [ADD LIVE URL]
     description:
-      'A bold, high-contrast site for a residential and commercial electrician, built to make the phone ring and the quote form fill up.',
+      'A sleek, night-blue website for a local heating and air conditioning company, built so homeowners with a broken system can call in one tap.',
     challenge:
-      'Customers needed to see at a glance that this is a professional, reliable crew, and get in touch without hunting for a phone number.',
+      'When the heat or AC goes out, people are stressed and scrolling fast. The site had to feel trustworthy right away and put the phone number everywhere.',
     approach:
-      'A confident dark-and-amber identity, service pages organized by the jobs people actually search for, and quote buttons placed at every natural decision point.',
-    services: ['Custom Design', 'Development', 'Mobile Responsive', 'Lead Generation', 'SEO Foundations'],
+      'A cool navy and ice-blue identity, an interactive thermostat in the hero, clear service cards for heating, cooling and maintenance, and call buttons at every step.',
+    services: ['Custom Design', 'Development', 'Interactive Hero', 'Request Form', 'Mobile Responsive'],
+  },
+  {
+    slug: 'select-plumbing',
+    name: 'Select Plumbing Leak Investigators',
+    industry: 'Leak Detection · Sugar Land, TX',
+    year: '', // [ADD YEAR] e.g. '2025'
+    accent: '#39c6e0',
+    image: 'select-plumbing',
+    url: '', // [ADD LIVE URL]
+    description:
+      'A precise, high-tech website for a leak detection specialist serving Sugar Land and the greater Houston area, for homes and businesses.',
+    challenge:
+      'Hidden leaks are hard to explain. Customers needed to understand the service quickly and trust that this team finds the source without tearing up their home.',
+    approach:
+      'A thermal-scan inspired hero, a clean step-by-step process, a gallery of real investigations, and a booking form plus click-to-call on every screen.',
+    services: ['Custom Design', 'Development', 'Service Pages', 'Booking Form', 'Mobile Responsive'],
   },
   {
     slug: 'basco-plumbing-heating',
