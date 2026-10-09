@@ -44,7 +44,7 @@ export const ContactForm = ({ site, formOptions }) => `
         <p class="contact__descriptor">${esc(site.descriptor)}</p>
         <ul class="contact__lines" role="list">
           ${ContactLine({ label: 'Email', value: site.email, href: `mailto:${site.email}`, iconName: 'mail' })}
-          ${each(site.phones, (ph) => ContactLine({ label: 'Phone', value: ph.display, href: `tel:${ph.tel}`, iconName: 'phone' }))}
+          ${each(site.phones, (ph) => ContactLine({ label: ph.label || 'Phone', value: ph.display, href: `tel:${ph.tel}`, iconName: 'phone' }))}
           ${ContactLine({ label: 'Service area', value: site.serviceArea, iconName: 'globe' })}
         </ul>
         <ul class="social-links" role="list">

@@ -16,8 +16,8 @@ export const site = {
   email: 'FDwebdesignz@gmail.com',
   // Shown in order on the contact section; the first is used in structured data.
   phones: [
-    { display: '(732) 850-2086', tel: '+17328502086' },
-    { display: '(973) 609-9663', tel: '+19736099663' },
+    { display: '(732) 850-2086', tel: '+17328502086', label: 'Consultations' }, // first call + Zoom meeting
+    { display: '(973) 609-9663', tel: '+19736099663', label: "Designer's line" },
   ],
   serviceArea: 'Websites for every kind of business, nationwide.',
   address: {
