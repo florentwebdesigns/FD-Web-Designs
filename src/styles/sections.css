@@ -170,11 +170,7 @@
   z-index: 1;
 }
 .plan--featured + .plan { border-left: 0; }
-.plan__name { font-family: var(--font-display); text-transform: uppercase; font-size: var(--fs-xl); letter-spacing: -0.04em; }
-.plan__price { display: grid; gap: 8px; padding-bottom: 22px; border-bottom: 1px solid var(--line); }
-.plan__amount { font-family: var(--font-display); font-weight: 500; font-size: clamp(2.4rem, 1.8rem + 2vw, 3.6rem); letter-spacing: -0.05em; line-height: 1; font-variant-numeric: tabular-nums; }
-.plan__per { font-size: 0.36em; letter-spacing: 0; color: var(--muted); margin-left: 4px; }
-.plan__setup { font-family: var(--font-mono); font-size: 0.75rem; letter-spacing: 0.08em; color: var(--muted); }
+.plan__name { font-family: var(--font-display); text-transform: uppercase; font-size: var(--fs-xl); letter-spacing: -0.04em; padding-bottom: 22px; border-bottom: 1px solid var(--line); }
 .plan__perks { list-style: none; padding: 0; display: grid; gap: 8px; }
 .plan__perks li {
   display: flex; align-items: center; gap: 10px;
