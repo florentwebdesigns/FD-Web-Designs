@@ -64,7 +64,7 @@ export const ContactForm = ({ site, formOptions }) => `
     <div class="form-wrap" data-reveal>
       <form class="form" id="project-form" novalidate data-form>
         <input type="hidden" name="intent" value="project" data-intent>
-        <div class="form__hp" aria-hidden="true"><label for="company_site">Leave this empty</label><input id="company_site" name="company_site" tabindex="-1" autocomplete="off"></div>
+        <div class="form__hp" aria-hidden="true"><label for="fd_hp">Leave this empty</label><input id="fd_hp" name="fd_hp" tabindex="-1" autocomplete="new-password" data-lpignore="true"></div>
 
         <div class="form__intent" role="radiogroup" aria-label="How would you like to start?">
           <label class="seg"><input type="radio" name="start" value="project" checked data-start><span>Start a project</span></label>

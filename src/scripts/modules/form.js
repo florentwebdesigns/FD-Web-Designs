@@ -27,13 +27,17 @@ const isPhone = () => matchMedia('(hover: none) and (pointer: coarse)').matches;
 
 // Google Sheets log (docs/booking-log.gs). Form-encoded + no-cors so Apps
 // Script accepts it without a CORS preflight; failures never block the visitor.
+// sendBeacon first: it is built to survive the page handing off to Messages
+// or the phone app, which can cancel a normal request on phones.
 function logToSheet(fields) {
   const url = config.form?.sheetLog;
   if (!url) return;
+  const body = new URLSearchParams({ ...fields, device: isPhone() ? 'Phone' : 'Computer', page: location.href });
   try {
-    fetch(url, { method: 'POST', mode: 'no-cors', keepalive: true, body: new URLSearchParams({
-      ...fields, device: isPhone() ? 'Phone' : 'Computer', page: location.href,
-    }) });
+    if (navigator.sendBeacon?.(url, body)) return;
+  } catch { /* fall through to fetch */ }
+  try {
+    fetch(url, { method: 'POST', mode: 'no-cors', keepalive: true, body });
   } catch { /* logging is best-effort */ }
 }
 
@@ -103,11 +107,13 @@ export function initForm() {
     const results = Object.keys(rules).map((n) => [n, check(n)]);
     const firstBad = results.find(([, ok]) => !ok);
     if (firstBad) { form.elements[firstBad[0]].focus(); return; }
-    if (form.elements.company_site.value) return; // honeypot: likely a bot
+    // Honeypot: browser autofill can fill it for real people too, so a filled
+    // trap only flags the request instead of silently dropping it.
+    const flagged = Boolean(form.elements.fd_hp.value);
 
     const data = Object.fromEntries(new FormData(form));
     data.looking_for = [...form.querySelectorAll('[name="looking_for"]:checked')].map((c) => c.value);
-    delete data.company_site;
+    delete data.fd_hp;
 
     form.classList.add('is-sending');
     submitLabel.dataset.label = submitLabel.textContent;
@@ -123,7 +129,7 @@ export function initForm() {
         if (!res.ok) throw new Error(`Request failed (${res.status})`);
       }
       logToSheet({
-        source: data.intent === 'call' ? 'Meeting request' : 'Project request',
+        source: (data.intent === 'call' ? 'Meeting request' : 'Project request') + (flagged ? ' (spam check)' : ''),
         name: data.name, business: data.business || '', email: data.email, phone: data.phone || '',
         business_type: data.business_type || '', website: data.website || '',
         looking_for: data.looking_for.join(', '), package: data.package || '', message: data.message,
@@ -137,7 +143,8 @@ export function initForm() {
         const href = smsLink(config.form.smsTo, smsBody);
         const send = document.querySelector('[data-sms-send]');
         if (send) send.href = href;
-        if (isPhone()) window.location.href = href;
+        // Short pause so the Sheet log leaves before the phone opens Messages.
+        if (isPhone()) setTimeout(() => { window.location.href = href; }, 350);
       }
       form.hidden = true;
       success.hidden = false;
