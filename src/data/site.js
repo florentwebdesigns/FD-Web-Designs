@@ -6,7 +6,7 @@ export const site = {
   shortName: 'FD Web Designs',
   tagline: 'We build websites that build businesses.',
   descriptor: 'Premium Web Design & Development',
-  url: 'https://fdwebdesigns.org',
+  url: 'https://www.fdwebdesigns.org',
   title: 'FD Web Designs LLC | Premium Web Design & Development',
   description:
     'FD Web Designs LLC creates premium, high-converting websites for businesses of every kind, nationwide. Build credibility, attract customers, and grow online.',

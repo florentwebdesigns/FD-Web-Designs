@@ -35,7 +35,7 @@ Search the `src/data` folder for `[` to find them:
 - **Email & phone**: `site.email`, `site.phone`. Placeholders are shown as-is and
   left out of the structured data until filled in.
 - **Social links**: `site.socials[].href`.
-- **Domain**: `site.url` is https://fdwebdesigns.org (also in `public/robots.txt` and `public/sitemap.xml`).
+- **Domain**: `site.url` is https://www.fdwebdesigns.org (also in `public/robots.txt` and `public/sitemap.xml`).
 - **Pricing**: `plans[].price` in `content.js`. Unfilled prices display `[ADD PRICE]`.
 - **Testimonials**: replace the quotes, names and companies, and set `placeholder: false`
   (placeholder reviews are labeled "Placeholder review" on the page).
