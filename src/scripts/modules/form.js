@@ -25,7 +25,25 @@ function smsText(d) {
 const smsLink = (to, text) => `sms:${to}?&body=${encodeURIComponent(text)}`;
 const isPhone = () => matchMedia('(hover: none) and (pointer: coarse)').matches;
 
+// Google Sheets log (docs/booking-log.gs). Form-encoded + no-cors so Apps
+// Script accepts it without a CORS preflight; failures never block the visitor.
+function logToSheet(fields) {
+  const url = config.form?.sheetLog;
+  if (!url) return;
+  try {
+    fetch(url, { method: 'POST', mode: 'no-cors', keepalive: true, body: new URLSearchParams({
+      ...fields, device: isPhone() ? 'Phone' : 'Computer', page: location.href,
+    }) });
+  } catch { /* logging is best-effort */ }
+}
+
 export function initForm() {
+  // Every tap on a phone number (nav, contact card, footer...) is logged as a call.
+  document.addEventListener('click', (e) => {
+    const link = e.target.closest?.('a[href^="tel:"]');
+    if (link) logToSheet({ source: 'Call button', button: link.textContent.replace(/\s+/g, ' ').trim().slice(0, 80) });
+  });
+
   const form = document.querySelector('[data-form]');
   if (!form) return;
   const success = document.querySelector('[data-form-success]');
@@ -104,6 +122,12 @@ export function initForm() {
         });
         if (!res.ok) throw new Error(`Request failed (${res.status})`);
       }
+      logToSheet({
+        source: data.intent === 'call' ? 'Meeting request' : 'Project request',
+        name: data.name, business: data.business || '', email: data.email, phone: data.phone || '',
+        business_type: data.business_type || '', website: data.website || '',
+        looking_for: data.looking_for.join(', '), package: data.package || '', message: data.message,
+      });
       // The request goes to our phone as a text, sent from the visitor's own
       // messages app. Phones open it right away; everyone gets a Send Text Now
       // button (a real link, which browsers reliably hand to Messages) and a
