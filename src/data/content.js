@@ -46,14 +46,12 @@ export const plans = [
   {
     name: 'Beginner',
     setup: '$1,000',
-    monthly: '$500',
     bestFor: 'Small businesses that need a professional online presence.',
     features: ['3-page website', 'Mobile optimization', 'Click-to-call button', 'Contact / quote form', 'Fast loading', 'Basic SEO structure', 'Google Business Profile connection', 'Hosting & maintenance', 'Minor monthly edits'],
   },
   {
     name: 'Intermediate',
     setup: '$1,000',
-    monthly: '$1,000',
     featured: true,
     trial: true,
     ads: true,
@@ -64,7 +62,6 @@ export const plans = [
   {
     name: 'Maximum Growth',
     setup: '$1,000',
-    monthly: '$2,000',
     trial: true,
     ads: true,
     includesPrevious: 'Intermediate',

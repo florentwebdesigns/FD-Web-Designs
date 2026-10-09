@@ -20,8 +20,7 @@ export const Pricing = ({ plans }) => `
       <li class="plan${p.featured ? ' plan--featured' : ''}" data-reveal style="--d:${i * 90}ms">
         <h3 class="plan__name">${esc(p.name)}</h3>
         <p class="plan__price">
-          <span class="plan__amount">${esc(p.monthly)}<span class="plan__per">/month</span></span>
-          <span class="plan__setup">+ ${esc(p.setup)} one-time setup</span>
+          <span class="plan__setup">${esc(p.setup)} one-time setup</span>
         </p>
         ${p.trial || p.ads ? `<ul class="plan__perks" role="list">
           ${p.trial ? `<li>${icon('spark')}<span>First month free</span></li>` : ''}
